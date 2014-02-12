@@ -1,0 +1,3 @@
+App.MainMenuView
+.container
+  p hello howdy

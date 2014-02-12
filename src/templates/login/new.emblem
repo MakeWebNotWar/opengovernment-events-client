@@ -1,0 +1,19 @@
+.splash
+  .container
+    .login
+      .login-screen
+        .login-icon
+          img alt="Welcome to Health App" src="images/icon.png"
+          h4
+            |Welcome To
+            small Health App
+        .login-form
+          .form-group
+            input#login-name.form-control.login-field placeholder="Email" type="email"
+            label.login-field-icon.fui-user for="login-name"
+          .form-group
+            input#login-pass.form-control.login-field placeholder="Password" type="password"
+            label.login-field-icon.fui-lock for="login-pass"
+          a.btn.btn-primary.btn-lg.btn-block href="login" click="login" target="main" Login 
+          a.login-link #{linkTo 'users' | Lost your password? }
+          a.login-link #{linkTo 'users' | Sign-up }

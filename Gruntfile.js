@@ -20,7 +20,7 @@ module.exports = function (grunt) {
 
   // configurable paths
   var yeomanConfig = {
-    src: 'app',
+    src: 'src',
     dev: 'dev',
     prod: 'prod'
   };
@@ -33,30 +33,26 @@ module.exports = function (grunt) {
         tasks: ['compass:src']
       },
       emblem: {
-        files: '<%= yeoman.src %>/templates/**/*.emblem',
+        files: '<%= yeoman.src %>/templates/{,*/}*.emblem',
         tasks: ['emblem:dev']
       },
-      // hamlbars: {
-      //   files: '<%= yeoman.src %>/templates/**/*.hamlbars',
-      //   tasks: ['hamlbars:src', 'emberTemplates:src']
-      // },
       haml:{
         files: '<%= yeoman.src %>/**/*.haml',
         tasks: ['haml:src', 'replace:src']
       },
       neuter: {
-        files: ['<%= yeoman.src %>/scripts/{,*/}*.js'],
-        tasks: ['neuter']
+        files: ['<%= yeoman.src %>/scripts/**/*.js'],
+        tasks: ['neuter:src']
       },
       livereload: {
         options: {
           livereload: LIVERELOAD_PORT
         },
         files: [
-          '<%= yeoman.dev %>/scripts/*.js',
-          '<%= yeoman.src %>/*.html',
+          '<%= yeoman.dev %>/js/**/*.js',
+          '<%= yeoman.dev %>/*.html',
           '{<%= yeoman.dev %>,<%= yeoman.src %>}/styles/{,*/}*.scss',
-          '<%= yeoman.src %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%= yeoman.dev %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
     },
@@ -186,37 +182,6 @@ module.exports = function (grunt) {
         }]
       }
     },
-    // cssmin: {
-    //     dev: {
-    //         files: {
-    //             '<%= yeoman.dev %>/styles/main.css': [
-    //                 'dev/styles/{,*/}*.css',
-    //                 '<%= yeoman.src %>/styles/{,*/}*.css'
-    //             ]
-    //         }
-    //     }
-    // },
-    // htmlmin: {
-    //   dev: {
-    //     options: {
-    //       removeCommentsFromCDATA: true,
-    //       // https://github.com/yeoman/grunt-usemin/issues/44
-    //       //collapseWhitespace: true,
-    //       collapseBooleanAttributes: true,
-    //       removeAttributeQuotes: true,
-    //       removeRedundantAttributes: true,
-    //       useShortDoctype: true,
-    //       removeEmptyAttributes: true,
-    //       removeOptionalTags: true
-    //     },
-    //     files: [{
-    //       expand: true,
-    //       cwd: '<%= yeoman.src %>',
-    //       src: '*.html',
-    //       dest: '<%= yeoman.dev %>'
-    //     }]
-    //   }
-    // },
     replace: {
       src: {
         options: {
@@ -272,14 +237,6 @@ module.exports = function (grunt) {
         sassDir: '<%= yeoman.src %>/sass',
         cssDir: '<%= yeoman.dev %>/css'
       }
-      // bootstrap: {
-      //   options: {
-      //     sassDir: '<%= yeoman.src %>/libs/bootstrap-sass-src/sass/',
-      //     cssDir: '<%= yeoman.dev %>/css/bootstrap/',
-      //     relativeAssets: false,
-      //     importPath: '<%= yeoman.src %>/libs'
-      //   }
-      // }
     },
     concurrent: {
       server: [
@@ -295,26 +252,13 @@ module.exports = function (grunt) {
         'htmlmin'
       ]
     },
-    // emberTemplates: {
-    //   options: {
-    //     templateName: function (sourceFile) {
-    //       var templatePath = '<%= yeoman.src %>' + '/templates/';
-    //       return sourceFile.replace(templatePath, '');
-    //     }
-    //   },
-    //   src: {
-    //     files: {
-    //       '<%= yeoman.dev %>/js/templates/templates.js': '<%= yeoman.src %>/templates/**/*.hbs'
-    //     }
-    //   }
-    // },
     emblem: {
       dev: {
         files: {
-          '<%= yeoman.dev %>/js/templates/templates.js':'<%= yeoman.src %>/templates/**/*.emblem'
+          '<%= yeoman.dev %>/js/templates/templates.js':'<%= yeoman.src %>/templates/{,*/}/*.emblem'
         },
         options: {
-          root: '<%= yeoman.src %>/scripts/templates/',
+          root: '<%= yeoman.src %>/templates/',
           dependencies: {
             jquery:     '<%= yeoman.src %>/bower_components/jquery/jquery.js',
             ember:      '<%= yeoman.src %>/bower_components/ember/ember.js',
@@ -377,8 +321,6 @@ module.exports = function (grunt) {
       'clean:server',
       'haml:src',
       'copy:src',
-      // 'hamlbars:src',
-      // 'emberTemplates:src',
       'compass:src',
       'replace:src',
       'concurrent:server',
