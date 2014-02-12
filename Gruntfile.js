@@ -20,7 +20,7 @@ module.exports = function (grunt) {
 
   // configurable paths
   var yeomanConfig = {
-    src: 'src',
+    src: 'app',
     dev: 'dev',
     prod: 'prod'
   };
@@ -68,7 +68,7 @@ module.exports = function (grunt) {
             return [
               lrSnippet,
               mountFolder(connect, 'dev'),
-              mountFolder(connect, yeomanConfig.src)
+              mountFolder(connect, '<%= yeoman.src %>')
             ];
           }
         }
@@ -87,7 +87,7 @@ module.exports = function (grunt) {
         options: {
           middleware: function (connect) {
             return [
-              mountFolder(connect, yeomanConfig.dev)
+              mountFolder(connect, '<%= yeoman.dev %>')
             ];
           }
         }
@@ -324,7 +324,7 @@ module.exports = function (grunt) {
       src: {
         options: {
           filepathTransform: function (filepath) {
-            return 'src/' + filepath;
+            return yeomanConfig.src + '/' + filepath;
           }
         },
         src: '<%= yeoman.src %>/scripts/app.js',
