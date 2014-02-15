@@ -8,4 +8,6 @@
   = outlet main
 
 footer
-  p id="built_by" Built By:
+  p id="built_by"
+    ' Built By: 
+    a href="http://peopleandcode.com" People & Code

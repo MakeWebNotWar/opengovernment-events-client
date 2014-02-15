@@ -1,12 +1,15 @@
 $(function(){
-  $(window).resize(function(){
+  $(window).load(function(){
+    $(window).resize(function(){
       adjust_main_height();
       adjust_main_width();
       adjust_side_menu_height();
-  }).resize();
+    }).resize();
+  });
 
-  $('#side-menu .item').on('click', function(e){
+  $('.item').on('click', function(e){
     e.preventDefault();
+    console.log('this');
     $(this).siblings().removeClass('selected');
     $(this).addClass('selected');
   });

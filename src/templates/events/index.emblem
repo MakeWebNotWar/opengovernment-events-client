@@ -2,6 +2,17 @@
   .navigation
     h2 Events
   ul class="items"
-    each event in events
-      = partial event
+    each event in model
+      li class="item"
+        a
+          h3=event.name
+          ul class="info"
+            li class="date" March 12, 2014
+            li class="time" 8:35pm
+            li class="location"
+              ' People &amp; Code
+              br
+              | 26 Soho Street, Toronto, Ontario
+Opengov.MapView id="map"
+
 

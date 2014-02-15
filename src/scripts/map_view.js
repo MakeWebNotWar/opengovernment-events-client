@@ -1,4 +1,4 @@
-$(window).on('load', GetMap);
+// $(window).on('load', GetMap);
 
 function GetMap() {
   var map = new Microsoft.Maps.Map(document.getElementById("map"), {

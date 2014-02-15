@@ -1,7 +1,10 @@
+// Opengov.ApplicationAdapter = DS.FixtureAdapter;
+
 Opengov.ApplicationAdapter = DS.RESTAdapter;
 
-
-DS.RESTAdapter.reopen({
+Opengov.ApplicationAdapter.reopen({
   host: "http://localhost:3000",
   namespace: "api/v1"
 });
+
+
