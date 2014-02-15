@@ -1,1 +1,11 @@
-= outlet main
+#top-menu
+  ul
+    li #{link-to 'index'| Open Government Road Trip}
+    li #{link-to 'events'| Events}
+    li #{link-to 'datasets'| Datasets}
+
+#main
+  = outlet main
+
+footer
+  p id="built_by" Built By:

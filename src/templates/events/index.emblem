@@ -1,0 +1,7 @@
+#side-menu
+  .navigation
+    h2 Events
+  ul class="items"
+    each event in events
+      = partial event
+

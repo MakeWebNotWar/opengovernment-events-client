@@ -1,30 +1,37 @@
-Opengov.Router.reopen({
-  location: 'history'
-});
+// Opengov.Router.reopen({
+//   location: 'history'
+// });
 
 Opengov.Router.map(function() {
   this.route('login', {path: '/login'}, function(){
 
   });
-  this.resource('users', { path: '/users'});
+  this.resource('users');
+  this.resource('events');
+  this.resource('datasets');
 });
 
 Opengov.IndexRoute = Ember.Route.extend({
-  redirect: function() {
-    this.transitionTo('login');
+  renderTemplate: function(){
+    this.transitionTo('events');
+  }
+});
+
+
+Opengov.EventsRoute = Ember.Route.extend({
+  renderTemplate: function(){
+    this.render('events/index');
   }
 });
 
 Opengov.LoginRoute = Ember.Route.extend({
   renderTemplate: function(){
-    this.render('login/new');
+    this.render('login/old');
   }
 });
 
 Opengov.LoginIndexRoute = Ember.Route.extend({
-  renderTemplate: function(){
-    this.render('login');
-  }
+  
 });
 
 Opengov.UsersRoute = Ember.Route.extend({
