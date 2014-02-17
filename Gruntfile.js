@@ -220,7 +220,8 @@ module.exports = function (grunt) {
             'ember/ember.js', 
             'ember-data/ember-data.js', 
             'jquery/jquery.js', 
-            'handlebars/handlebars.runtime.js'
+            'handlebars/handlebars.runtime.js',
+            'momentjs/moment.js'
           ],
           dest: '<%= yeoman.dev %>/js/libs/'
         }]

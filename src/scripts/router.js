@@ -25,8 +25,20 @@ Opengov.EventsRoute = Ember.Route.extend({
 });
 
 Opengov.EventRoute = Ember.Route.extend({
-  model: function(){
+  model: function(params){
     return this.store.find('event', params.event_id);
+  }
+});
+
+Opengov.DatasetsRoute = Ember.Route.extend({
+  model: function(){
+    return this.store.find('dataset');
+  }
+});
+
+Opengov.DatasetRoute = Ember.Route.extend({
+  model: function(params){
+    return this.store.find('dataset', params.dataset_id);
   }
 });
 
