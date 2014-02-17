@@ -2,17 +2,15 @@
   .navigation
     h2 Events
   ul class="items"
-    each event in model
+    each location in model
       li class="item"
         a
-          h3=event.name
+          h3=location.name
           ul class="info"
             li class="date" March 12, 2014
             li class="time" 8:35pm
             li class="location"
-              ' {{event.location.name}}
+              ' People &amp; Code
               br
               | 26 Soho Street, Toronto, Ontario
 Opengov.MapView id="map"
-
-

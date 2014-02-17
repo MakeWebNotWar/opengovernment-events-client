@@ -2,7 +2,7 @@ $(function(){
   $(window).load(function(){
     $(window).resize(function(){
       adjust_main_height();
-      adjust_main_width();
+      adjust_map_width();
       adjust_side_menu_height();
     }).resize();
   });
@@ -24,7 +24,7 @@ function adjust_main_height() {
   $('#main').css('height', diff);
 }
 
-function adjust_main_width() {
+function adjust_map_width() {
   var window_width = $(window).width(),
       side_menu_width = $('#side-menu').outerWidth(),
       diff = window_width - side_menu_width;

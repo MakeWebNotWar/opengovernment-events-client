@@ -3,6 +3,7 @@
     li #{link-to 'index'| Open Government Road Trip}
     li #{link-to 'events'| Events}
     li #{link-to 'datasets'| Datasets}
+    li #{link-to 'locations'| Locations}
 
 #main
   = outlet main

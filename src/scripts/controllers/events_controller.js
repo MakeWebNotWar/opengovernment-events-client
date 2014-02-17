@@ -1,3 +1,1 @@
-Opengov.EventsController = Ember.Controller.extend({
-
-});
+Opengov.EventsController = Ember.Controller.extend();
