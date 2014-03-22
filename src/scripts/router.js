@@ -3,9 +3,12 @@
 // });
 
 Opengov.Router.map(function() {
-  this.resource('events');
-  this.resource('event', { path: "/events/:event_id"});
-  this.resource('locations', { path: "/locations/:locaiton_id"});
+  this.resource('events', function(){
+    this.resource('event', {path: "/events/:event_id"});
+  });
+  this.resource('locations', function(){
+    this.resource('location', {path: "/locations/:locaiton_id"});
+  });
   this.resource('datasets');
 });
 
@@ -14,6 +17,15 @@ Opengov.IndexRoute = Ember.Route.extend({
     this.transitionTo('events');
   }
 });
+
+// Opengov.EventsIndexRoute = Ember.Route.extend({
+//   renderTemplate: function(){
+//     this.render('events/index');
+//   },
+//   model: function(){
+//     return this.store.find('event');
+//   }
+// });
 
 Opengov.EventsRoute = Ember.Route.extend({
   renderTemplate: function(){

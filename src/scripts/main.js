@@ -5,14 +5,7 @@ $(function(){
       adjust_map_width();
       adjust_side_menu_height();
     }).resize();
-  });
-
-  $('.item').on('click', function(e){
-    e.preventDefault();
-    console.log('this');
-    $(this).siblings().removeClass('selected');
-    $(this).addClass('selected');
-  });
+  }); 
 });
 
 function adjust_main_height() {
@@ -30,7 +23,6 @@ function adjust_map_width() {
       diff = window_width - side_menu_width;
 
   $('#map, #form-area').outerWidth(diff);
-
 }
 
 function adjust_side_menu_height(){

@@ -1,0 +1,14 @@
+li class="item"
+  a
+    h3=event.name
+    ul class="info"
+      li class="date"
+        '{{event.start_date}}
+      li class="time"
+        '{{event.start_date}}
+      li class="location"
+        '{{event.location.name}}
+        br
+        '{{event.location.address_1}} {{event.location.address_2}}
+        br
+        '{{event.location.city}}, {{event.location.province}}

@@ -1,0 +1,4 @@
+ul class="items"
+  h3
+  each event in model
+    Opengov.EventItemView

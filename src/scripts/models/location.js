@@ -8,5 +8,7 @@ Opengov.Location = DS.Model.extend({
   province: DS.attr('string'),
   postal_code: DS.attr('string'),
   country: DS.attr('string'),
-  events: DS.hasMany('event', {async: true})
+  coordinates: DS.attr('array'),
+  events: DS.hasMany('event', {async: true}),
+
 });
