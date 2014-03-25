@@ -18,25 +18,19 @@ Opengov.IndexRoute = Ember.Route.extend({
   }
 });
 
-// Opengov.EventsIndexRoute = Ember.Route.extend({
-//   renderTemplate: function(){
-//     this.render('events/index');
-//   },
-//   model: function(){
-//     return this.store.find('event');
-//   }
-// });
-
-Opengov.EventsRoute = Ember.Route.extend({
+Opengov.EventsIndexRoute = Ember.Route.extend({
   renderTemplate: function(){
     this.render('events/index');
   },
-  model: function(params){
+  model: function(){
     return this.store.find('event');
   }
 });
 
 Opengov.EventRoute = Ember.Route.extend({
+  renderTemplate: function(){
+    this.render('events/event');
+  },
   model: function(params){
     return this.store.find('event', params.event_id);
   }

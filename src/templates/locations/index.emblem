@@ -1,5 +1,5 @@
 #side-menu
   .navigation
-    h2 Events
+    h2 Locations
   ul class="items"
 Opengov.MapView id="map"
