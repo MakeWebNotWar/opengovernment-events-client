@@ -1,4 +1,7 @@
-ul class="items"
-  h3
-  each event in model
-    Opengov.EventItemView
+#side-menu
+  .navigation
+    h2 Events
+  ul class="items"
+    h3
+    each event in model
+      Opengov.EventItemView

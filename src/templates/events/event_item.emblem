@@ -3,9 +3,7 @@ li class="item"
     h3=event.name
     ul class="info"
       li class="date"
-        '{{event.start_date}}
-      li class="time"
-        '{{event.start_date}}
+        '{{format-date event.start_date}}
       li class="location"
         '{{event.location.name}}
         br

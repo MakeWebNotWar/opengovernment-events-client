@@ -4,7 +4,7 @@ $(function(){
       adjust_main_height();
       adjust_map_width();
       adjust_side_menu_height();
-    }).resize();
+    });
   }); 
 });
 

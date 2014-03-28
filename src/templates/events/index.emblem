@@ -1,7 +1,6 @@
 #side-menu
   .navigation
     h2 Events
-  Opengov.EventsListView
-Opengov.MapView id="map"
-
-
+  ul.items
+    each event in controller
+      Opengov.EventView

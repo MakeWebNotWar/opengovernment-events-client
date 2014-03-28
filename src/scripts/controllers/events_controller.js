@@ -4,8 +4,10 @@ Opengov.EventsController = Ember.Controller.extend({
   }
 });
 
-// Opengov.EventController = Ember.Controller.extend({
-//   model: function(params){
-//     return Opengov.Events.findBy(params.event_id);
-//   }
-// });
+Opengov.EventsIndexController = Ember.ArrayController.extend({
+  itemController: 'event'
+});
+
+Opengov.EventController = Ember.ObjectController.extend({
+  sound: 1
+});

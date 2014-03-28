@@ -1,4 +1,4 @@
-Opengov.MapView = Ember.View.extend({
+Opengov.EventsView = Ember.View.extend({
   didInsertElement: function(){
     Opengov.Map.mapInit();
     navigator.geolocation.getCurrentPosition(this.getUserLocation);

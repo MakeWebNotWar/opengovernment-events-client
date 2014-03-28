@@ -35,7 +35,7 @@ body {
 }
 
 a {
-  cursor: pointer;
+  cursor: pointer !important;
   color: $white;
   text-decoration: none;
   transition: all 0.5s linear;

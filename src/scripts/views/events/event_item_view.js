@@ -11,13 +11,12 @@ Opengov.EventItemView = Ember.View.extend({
       center: new Microsoft.Maps.Location(self.location.get('coordinates')[0], self.location.get('coordinates')[1]),
       zoom: 17
     });
-    var eventId = self.get('content.id');
   },
   didInsertElement: function(){
     var self = this;
     var index = parseInt(self.get('_parentView.contentIndex'));
     var locationId = self.get('context').get('model').get('content')[index].get('location').get('id');
-
+    console.log(this.get('id'));
     Opengov.Location.store.find('location', locationId).then(function(location){
       var coordinates = location.get('coordinates'),
           lat = coordinates[0],
@@ -27,19 +26,14 @@ Opengov.EventItemView = Ember.View.extend({
           pin = new Microsoft.Maps.Pushpin(loc, {text: text});
           self.location = location;
 
-          Microsoft.Maps.Events.addHandler(pin, 'click', self.toggleEventInfo);
+          Microsoft.Maps.Events.addHandler(pin, 'click', self.toggleEventInfo(self));
 
       Opengov.Map.eventsPushPinsLayer.push(pin);
     });
   },
   location: null,
-  toggleEventInfo: function(ev){    
-    console.log('clicks happen');
-    $('.eventInfo').hide();
-    console.log(ev);
-  },
-  eventInfoBox: {
-    visible: false
+  toggleEventInfo: function(self){
+
   }
 });
     

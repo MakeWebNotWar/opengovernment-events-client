@@ -10,4 +10,5 @@ require('scripts/routes/{,*/}*');
 require('scripts/views/{,*/}*');
 require('scripts/router');
 require('scripts/map_view');
+require('scripts/helpers/{,*/}*');
 require('scripts/main');

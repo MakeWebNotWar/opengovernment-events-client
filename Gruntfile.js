@@ -189,6 +189,7 @@ module.exports = function (grunt) {
             app: 'js/app.js',
             ember: 'js/libs/ember/ember.js',
             ember_data: 'js/libs/ember-data/ember-data.js',
+            moment: 'js/libs/momentjs/moment.js',
             handlebars: 'js/libs/handlebars/handlebars.runtime.js',
             jquery: 'js/libs/jquery/jquery.js',
             templates: 'js/templates/templates.js'

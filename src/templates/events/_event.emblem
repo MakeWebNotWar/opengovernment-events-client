@@ -1,10 +1,14 @@
-li class="item"
+li.item
   a
-    h3=event.name
+    h3
+      '{{name}}
     ul class="info"
-      li class="date" March 12, 2014
-      li class="time" 8:35pm
+      li class="date"
+        '{{format-date start_date}}
       li class="location"
-        ' People &amp; Code
+        '{{location.name}}
         br
-        | 26 Soho Street, Toronto, Ontario
+        '{{location.address_1}} {{location.address_2}}
+        br
+        '{{location.city}}, {{location.province}}
+        '{{soundVolume}} hello
