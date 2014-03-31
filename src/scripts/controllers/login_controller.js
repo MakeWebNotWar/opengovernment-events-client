@@ -1,4 +1,4 @@
-Opengov.LoginController = Ember.Controller.extend({
+Opengov.LoginController = Ember.ObjectController.extend({
   reset: function() {
     this.setProperties({
       username: "",
@@ -6,9 +6,7 @@ Opengov.LoginController = Ember.Controller.extend({
       errorMessage: ""
     });
   },
-
   login: function() {
-
     var self = this, data = this.getProperties('username', 'password');
 
     // Clear out any error messages.
@@ -22,5 +20,9 @@ Opengov.LoginController = Ember.Controller.extend({
         self.set('token', response.token);
       }
     });
-  }
+  },
+  coordinates: localStorage.coordinates,
+  coordinatesChanged: function(){
+    localStorage.coordinates = this.get('coordinates');
+  }.observes('coordinates')
 });

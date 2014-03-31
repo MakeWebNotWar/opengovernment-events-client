@@ -1,0 +1,4 @@
+#top-menu
+  ul
+    li #{link-to 'index'| Open Government Events}
+    li #{link-to 'events'| Events}

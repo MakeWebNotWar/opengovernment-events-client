@@ -1,14 +1,5 @@
-#top-menu
-  ul
-    li #{link-to 'index'| Open Government Road Trip}
-    li #{link-to 'events'| Events}
-    li #{link-to 'locations'| Locations}
+= partial "menu/main"
 
 #main
   = outlet main
   = outlet details
-
-footer
-  p id="built_by"
-    ' Built By: 
-    a href="http://peopleandcode.com" People & Code

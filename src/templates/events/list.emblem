@@ -1,7 +1,6 @@
 #side-menu
   .navigation
     h2 Events
-  ul class="items"
-    h3
+  ol class="items"
     each event in model
       Opengov.EventItemView

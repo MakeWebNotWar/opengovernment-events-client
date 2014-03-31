@@ -69,7 +69,6 @@ Opengov.LocationRoute = Ember.Route.extend({
 
 Opengov.LoginRoute = Ember.Route.extend({
   setupController: function(controller, context) {
-    controller.reset();
   }
 });
 

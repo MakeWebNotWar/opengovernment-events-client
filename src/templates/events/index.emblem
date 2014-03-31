@@ -1,6 +1,7 @@
 #side-menu
-  .navigation
-    h2 Events
-  ul.items
-    each event in controller
-      Opengov.EventView
+    .navigation
+      h2 Events
+      button{ action 'centerToUser' } Near You
+    ul.items
+      each event in controller
+        Opengov.EventView

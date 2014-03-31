@@ -5,9 +5,13 @@ Opengov.EventsController = Ember.Controller.extend({
 });
 
 Opengov.EventsIndexController = Ember.ArrayController.extend({
-  itemController: 'event'
+  itemController: 'event',
+  actions: {
+    centerToUser: function(){
+      Opengov.Map.centerToUser();
+    }
+  }
 });
 
 Opengov.EventController = Ember.ObjectController.extend({
-  sound: 1
 });

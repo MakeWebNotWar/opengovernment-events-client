@@ -1,8 +1,9 @@
 Opengov.EventView = Ember.View.extend({
   templateName: 'events/event',
   click: function() {
-    var self = this;
-    var elementId = self.get('elementId');
+    var self = this,
+        elementId = self.get('elementId'),
+        location = self.location;
 
     $('.item').removeClass('selected');
     self.$().find('.item').addClass('selected');
@@ -14,10 +15,9 @@ Opengov.EventView = Ember.View.extend({
   },
   didInsertElement: function(){
     var self = this,
-        lat,
-        lng,
+        eventId = self.get('controller.id'),
         index = parseInt(self.get('_parentView.contentIndex'));
-    self.get('controller').get('location').then(
+    self.get('controller.location').then(
       function(loc){
         self.location = loc;
         coordinates = loc.get('coordinates'),
@@ -28,10 +28,16 @@ Opengov.EventView = Ember.View.extend({
         pin = new Microsoft.Maps.Pushpin(loc, {text: text});
 
         Opengov.Map.eventsPushPinsLayer.push(pin);
+
+        Microsoft.Maps.Events.addHandler(pin, 'click', function(){
+          self.toggleEventInfo(this, self)
+        });
+
+        Opengov.Map.setBoundingBox(Opengov.Map.eventsPushPinsLayer);
       }
     );
   },
-  toggleEventInfo: function(self){
-
+  toggleEventInfo: function(e, self){
+    
   }
 });
