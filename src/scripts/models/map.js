@@ -6,16 +6,10 @@ Opengov.Map = {
     });
   },
   centerToUser: function(){
-    var coordinates = $.parseJSON(localStorage.coordinates);
-
-    if(coordinates && !$.isEmptyObject(coordinates)){
-      this.makeUserPushPin(coordinates);
-    } else {
-      navigator.geolocation.getCurrentPosition(
-        Opengov.Map.getUserGeoLocation,
-        Opengov.Map.getUserIpLocation
-      );
-    }
+    navigator.geolocation.getCurrentPosition(
+      Opengov.Map.getUserGeoLocation,
+      Opengov.Map.getUserIpLocation
+    );
   },
   getUserIpLocation: function(position){
     $.getJSON("http://freegeoip.net/json/").then(function(coordinates){
