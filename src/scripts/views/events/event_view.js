@@ -14,30 +14,44 @@ Opengov.EventView = Ember.View.extend({
     });
   },
   didInsertElement: function(){
+    console.log('eventview fired');
     var self = this,
         eventId = self.get('controller.id'),
         index = parseInt(self.get('_parentView.contentIndex'));
-    self.get('controller.location').then(
-      function(loc){
-        self.location = loc;
-        coordinates = loc.get('coordinates'),
-        lat = coordinates[0],
-        lng = coordinates[1]
-        loc = new Microsoft.Maps.Location(lat, lng),
-        text = (index + 1).toString(),
-        pin = new Microsoft.Maps.Pushpin(loc, {text: text});
+    self.get('controller.location').then(function(loc){
+      self.location = loc;
+      coordinates = loc.get('coordinates'),
+      lat = coordinates[0],
+      lng = coordinates[1]
+      loc = new Microsoft.Maps.Location(lat, lng),
+      text = (index + 1).toString(),
+      pin = new Microsoft.Maps.Pushpin(loc, {text: text});
 
-        Opengov.Map.eventsPushPinsLayer.push(pin);
+      Opengov.Map.eventsPushPinsLayer.push(pin);
 
-        Microsoft.Maps.Events.addHandler(pin, 'click', function(){
-          self.toggleEventInfo(this, self)
-        });
+      Microsoft.Maps.Events.addHandler(pin, 'click', function(ev){
+        self.toggleEventInfo(ev)
+      });
 
-        Opengov.Map.setBoundingBox(Opengov.Map.eventsPushPinsLayer);
-      }
-    );
+      // Opengov.Map.mapsetBoundingBox(Opengov.Map.eventsPushPinsLayer);
+      // Opengov.Map.map.setView({
+      //   bounds: Opengov.Map.setBoundingBox(Opengov.Map.eventsPushPinsLayer)
+      // });
+    });
+
   },
-  toggleEventInfo: function(e, self){
-    
+  toggleEventInfo: function(ev){
+    var coordinates = ev.target._location,
+        lat = coordinates.latitude,
+        lng = coordinates.longitude,
+        center = new Microsoft.Maps.Location(lat, lng);
+
+    Opengov.Map.map.setView({
+      center: center
+    });
+
+    console.log(this.get('controller.id'));
+
+    this.get('controller').transitionToRoute('event', this.get('controller.id'));
   }
 });

@@ -1,4 +1,6 @@
 #top-menu
-  ul
-    li #{link-to 'index'| Open Government Events}
+  ul#main-menu
+    li #{link-to 'index'| Open Government Events (beta)}
     li #{link-to 'events'| Events}
+  ul#account-menu 
+    li #{link-to 'login'| Login}

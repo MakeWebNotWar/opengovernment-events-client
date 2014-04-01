@@ -1,9 +1,15 @@
 Opengov.Map = {
-  mapInit: function(){
-    Opengov.Map.map = new Microsoft.Maps.Map(document.getElementById("map"), {
+  mapInit: function(callback){
+    center = new Microsoft.Maps.Location(43.7000, -79.4000);
+
+    Opengov.Map.map = window.Opengov.Map.map = new Microsoft.Maps.Map(document.getElementById("map"), {
       credentials:"Avpt8rWAmFwIe9hCE8EP5GyKx3Vgr86LqjoWGZ8KdrvtgazGt1ONCO9tr9AF1VJN",
-      mapTypeId: Microsoft.Maps.MapTypeId.road
+      mapTypeId: Microsoft.Maps.MapTypeId.road,
+      zoom: 10,
+      center: center
     });
+
+    return Opengov.Map.map;
   },
   centerToUser: function(){
     navigator.geolocation.getCurrentPosition(
@@ -50,18 +56,18 @@ Opengov.Map = {
     });
   },
   setBoundingBox: function(collection){
-    var locations = [];
+    var locations = [],
+        boundingBox;
 
     if(collection){
       for(var i = 0, len = collection.getLength(); i < len; ++i){
-        console.log(i);
         var location = collection.get(i).getLocation();
         
         locations.push(location);
       }
       var boundingBox = Microsoft.Maps.LocationRect.fromLocations(locations);
-
-      Opengov.Map.map.setView({bounds: boundingBox});
     }
+
+    return boundingBox;
   }
 }

@@ -1,5 +1,2 @@
 = partial "menu/main"
-
-#main
-  = outlet main
-  = outlet details
+= outlet main

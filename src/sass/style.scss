@@ -78,6 +78,15 @@ ul {
       }
     }
   }
+  #main-menu {
+    float: left;
+    width: 500px;
+    display: inline-block;
+  }
+  #account-menu {
+    float: right;
+    display: inline-block;
+  }
 }
 
 #side-menu {

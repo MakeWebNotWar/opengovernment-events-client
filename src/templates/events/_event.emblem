@@ -11,4 +11,3 @@ li.item
         '{{location.address_1}} {{location.address_2}}
         br
         '{{location.city}}, {{location.province}}
-        '{{soundVolume}}

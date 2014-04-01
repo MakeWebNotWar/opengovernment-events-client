@@ -1,8 +1,9 @@
 Opengov.MapView = Ember.View.extend({
   didInsertElement: function(){
-    var self = this;
+    var map = Opengov.Map.mapInit();
 
-    Opengov.Map.mapInit();
-    Opengov.Map.map.entities.push(Opengov.Map.eventsPushPinsLayer);
+    map.entities.push(Opengov.Map.eventsPushPinsLayer);
+
+    $(window).resize();
   }
 });
