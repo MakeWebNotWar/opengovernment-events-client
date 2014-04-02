@@ -202,20 +202,15 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
-  font-size: 12pt;
+  font-size: 6pt;
   text-align: center;
-  height: 72px;
   background: $dark_grey;
   p {
-    color: $orange;
+    color: $dark_green;
     margin: 0px;
     padding: 1em 0px;
     a {
-      color: $white;
-      &:hover {
-        text-decoration: underline;
-        color: $orange;
-      }
+      text-decoration: underline;
     }
   }
 }
