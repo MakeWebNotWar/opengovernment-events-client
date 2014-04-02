@@ -100,6 +100,13 @@ ul {
   height: 100%;
   overflow-y: hidden;
   position: relative;
+  clear: both;
+  button {
+    background-color: $purple;
+    &:hover {
+      background-color: $dark_purple;
+    }
+  }
   .navigation {
     width: 100%;
     overflow: hidden;
