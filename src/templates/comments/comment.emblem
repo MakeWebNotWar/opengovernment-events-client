@@ -1,6 +1,6 @@
 li.comment
   .circle-image
-    '{{gravatar-url comment.user.gravatarID}}
+    '{{gravatar-image comment.user.gravatarID}}
   h4
     '{{comment.user.firstname}} {{comment.user.lastname}}
   p

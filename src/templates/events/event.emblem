@@ -6,6 +6,8 @@ li.item
       li class="date"
         '{{format-date start_date}}
       li class="location"
+        'Location:
+        br
         '{{location.name}}
         br
         '{{location.address_1}} {{location.address_2}}

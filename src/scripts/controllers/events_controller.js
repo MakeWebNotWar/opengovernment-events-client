@@ -15,7 +15,7 @@ Opengov.EventsController = Ember.ArrayController.extend({
 });
 
 Opengov.EventController = Ember.ObjectController.extend({
-  needs: ['comment'],
+  needs: ['comment', 'user'],
   itemController: 'event.details'
 });
 

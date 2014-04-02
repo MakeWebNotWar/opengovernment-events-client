@@ -16,8 +16,18 @@
               '{{location.address_1}} {{location.address_2}}
               br
               '{{location.city}}, {{location.province}}
+            li class="event-organizer"
+              p
+                'Organized by:
+                br
+                '{{user.firstname}} {{user.lastname}}
+              .circle-image
+                '{{gravatar-image user.gravatarID}}
   #comments
-    h1 Comments
+    h1 Conversations
     ul
-      each comment in comments
-        = view Opengov.CommentView
+      if comments
+        each comment in comments
+          = view Opengov.CommentView
+      else
+        'Currently no conversations

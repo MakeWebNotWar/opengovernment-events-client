@@ -6,5 +6,6 @@ Opengov.Event = DS.Model.extend({
   url: DS.attr('string'),
   location: DS.belongsTo('location', {async: true}),
   start_date: DS.attr('string'),
-  comments: DS.hasMany('comment', {async: true})
+  comments: DS.hasMany('comment', {async: true}),
+  user: DS.belongsTo('user', {async: true})
 });

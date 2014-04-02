@@ -237,8 +237,23 @@ footer {
       overflow: hidden;
       .circle-image {
         margin-right: 20px;
+        float: left;
       }
     }
+  }
+}
+
+.event-organizer {
+  overflow: hidden;
+  display: block;
+  border-top: 1px solid $dark_green;
+  margin-top: 20px;
+  padding-top: 20px;
+  .circle-image {
+    float: right;
+  }
+  p {
+    float: left;
   }
 }
 
@@ -247,7 +262,6 @@ footer {
   border-radius: 500px;
   overflow:hidden;
   display: inline-block;
-  float: left;
   width:100px;
   height: 100px;
   img{
