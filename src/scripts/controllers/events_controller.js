@@ -3,8 +3,22 @@ Opengov.EventsController = Ember.ArrayController.extend({
   actions: {
     centerToUser: function(){
       Opengov.Map.centerToUser();
+    },
+    boundToEvents: function(){
+      a = Opengov.Map.setBoundingBox(Opengov.Map.eventsPushPinsLayer);
+      Opengov.Map.map.setView({
+        bounds: a
+      });
     }
-  }
+  },
+
 });
 
-Opengov.EventController = Ember.ObjectController.extend({});
+Opengov.EventController = Ember.ObjectController.extend({
+  needs: ['comment'],
+  itemController: 'event.details'
+});
+
+Opengov.EventDetailsController = Ember.ObjectController.extend({
+
+});

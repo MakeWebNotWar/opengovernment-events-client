@@ -1,15 +1,16 @@
 Opengov.Map = {
-  mapInit: function(callback){
-    center = new Microsoft.Maps.Location(43.7000, -79.4000);
+  mapInit: function(){
+    var self = this,
+        center = new Microsoft.Maps.Location(43.7000, -79.4000);
 
-    Opengov.Map.map = window.Opengov.Map.map = new Microsoft.Maps.Map(document.getElementById("map"), {
+    self.map = window.Opengov.Map.map = new Microsoft.Maps.Map(document.getElementById("map"), {
       credentials:"Avpt8rWAmFwIe9hCE8EP5GyKx3Vgr86LqjoWGZ8KdrvtgazGt1ONCO9tr9AF1VJN",
       mapTypeId: Microsoft.Maps.MapTypeId.road,
       zoom: 10,
       center: center
     });
 
-    return Opengov.Map.map;
+    return self.map;
   },
   centerToUser: function(){
     navigator.geolocation.getCurrentPosition(
@@ -17,6 +18,7 @@ Opengov.Map = {
       Opengov.Map.getUserIpLocation
     );
   },
+  eventsPushPinsLayer: new Microsoft.Maps.EntityCollection(),
   getUserIpLocation: function(position){
     $.getJSON("http://freegeoip.net/json/").then(function(coordinates){
 
@@ -56,7 +58,9 @@ Opengov.Map = {
     });
   },
   setBoundingBox: function(collection){
-    var locations = [],
+    var self = this,
+        // collection = self.eventsPushPinsLayer,
+        locations = [],
         boundingBox;
 
     if(collection){
@@ -66,8 +70,7 @@ Opengov.Map = {
         locations.push(location);
       }
       var boundingBox = Microsoft.Maps.LocationRect.fromLocations(locations);
+      return boundingBox;
     }
-
-    return boundingBox;
   }
 }

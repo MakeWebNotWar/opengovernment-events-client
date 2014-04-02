@@ -1,3 +1,5 @@
-Opengov.EventShowView = Ember.View.extend({
-  templateName: "events/show"
+Opengov.EventsShowView = Ember.View.extend({
+  didInsertElement: function(){
+    console.log(this.get('controller.id'));
+  }
 });

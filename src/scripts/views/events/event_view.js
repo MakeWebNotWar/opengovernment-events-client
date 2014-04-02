@@ -14,7 +14,6 @@ Opengov.EventView = Ember.View.extend({
     });
   },
   didInsertElement: function(){
-    console.log('eventview fired');
     var self = this,
         eventId = self.get('controller.id'),
         index = parseInt(self.get('_parentView.contentIndex'));
@@ -32,13 +31,7 @@ Opengov.EventView = Ember.View.extend({
       Microsoft.Maps.Events.addHandler(pin, 'click', function(ev){
         self.toggleEventInfo(ev)
       });
-
-      // Opengov.Map.mapsetBoundingBox(Opengov.Map.eventsPushPinsLayer);
-      // Opengov.Map.map.setView({
-      //   bounds: Opengov.Map.setBoundingBox(Opengov.Map.eventsPushPinsLayer)
-      // });
     });
-
   },
   toggleEventInfo: function(ev){
     var coordinates = ev.target._location,

@@ -1,3 +1,0 @@
-#side-menu
-  h1
-    = name

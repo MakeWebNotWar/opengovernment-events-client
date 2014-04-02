@@ -3,10 +3,11 @@
 // });
 
 Opengov.Router.map(function() {
-  this.resource('events', function(){});
+  this.resource('events');
   this.resource('event', {path: "events/:event_id"});
   this.route('login');
   this.resource('locations');
+  this.resource('comments', {path: "comments/:comment_id"});
   this.resource('login');
 });
 
@@ -17,12 +18,10 @@ Opengov.IndexRoute = Ember.Route.extend({
 });
 
 Opengov.EventsRoute = Ember.Route.extend({
-  beforeModel: function(){
-    Opengov.Map.eventsPushPinsLayer = new Microsoft.Maps.EntityCollection();
-  },
   renderTemplate: function(){
     this.render('events/events', {
-      outlet: "main"
+      outlet: "main",
+      into: "application"
     });
   },
   model: function(){
@@ -31,11 +30,13 @@ Opengov.EventsRoute = Ember.Route.extend({
 });
 
 Opengov.EventRoute = Ember.Route.extend({
-  setupController: function(controller, e){
-    controller.set('model', e)
-  },
   renderTemplate: function(){
-    this.render('events/show');
+    this.render('events/details', {
+      outlet: "main"
+    });
+  },
+  model: function(params){
+    return this.store.find('event', params.event_id)
   }
 });
 
@@ -57,8 +58,16 @@ Opengov.LocationRoute = Ember.Route.extend({
   }
 });
 
+Opengov.CommentRoute = Ember.Route.extend({
+  renderTemplate: function(){
+    this.render('comments/index');
+  },
+  model: function(params){
+    return this.store.find('comment', params.comment_id);
+  }
+});
+
 Opengov.LoginRoute = Ember.Route.extend({
   setupController: function(controller, context) {
   }
 });
-

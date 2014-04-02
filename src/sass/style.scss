@@ -6,6 +6,7 @@ $dark_grey: #232323;
 
 // Colours
 
+$green: #19664a;
 $dark_green: #ccc;
 
 $purple: #6a5a8c;
@@ -80,7 +81,6 @@ ul {
   }
   #main-menu {
     float: left;
-    width: 500px;
     display: inline-block;
   }
   #account-menu {
@@ -144,7 +144,7 @@ ul {
     li.item {
       transition: all 0.5s linear;
       border-bottom: 1px solid #256e53;
-      background-color: #19664a;
+      background-color: $green;
       &:hover, &.selected {
         background-color: #1f7f5c;
       }
@@ -220,8 +220,39 @@ footer {
   }
 }
 
+#comments {
+  background-color: $white;
+  color: $dark_grey;
+  padding: 20px;
+  float: right;
+  h1,h2,h3,h4,h5,h6 {
+    margin-top: 0px;
+  }
+  ul{
+    list-style: none;
+    li {
+      padding: 30px 10px;
+      display: block;
+      border-bottom: 1px solid $cream;
+      overflow: hidden;
+      .circle-image {
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
 .circle-image {
-  border: 5px solid $white;
+  border: 3px solid $green;
+  border-radius: 500px;
+  overflow:hidden;
+  display: inline-block;
+  float: left;
+  width:100px;
+  height: 100px;
+  img{
+    width: 100%
+  }
 }
 
 @import "admin"

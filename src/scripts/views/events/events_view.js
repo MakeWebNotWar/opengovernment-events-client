@@ -1,5 +1,13 @@
+// suggest remove
+
 Opengov.EventsView = Ember.View.extend({
   didInsertElement: function(){
-    console.log('eventsView fired');
+    console.log('finsihed');
+  }
+});
+
+Opengov.EventsIndexView = Ember.View.extend({
+  didInsertElement: function(){
+    console.log('finsihed');
   }
 });

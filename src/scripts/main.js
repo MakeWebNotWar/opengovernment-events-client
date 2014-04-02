@@ -22,7 +22,7 @@ function adjust_map_width() {
       side_menu_width = $('#side-menu').outerWidth(),
       diff = window_width - side_menu_width;
 
-  $('#map, #form-area').outerWidth(diff);
+  $('#map, #form-area, #comments').outerWidth(diff);
 }
 
 function adjust_side_menu_height(){
