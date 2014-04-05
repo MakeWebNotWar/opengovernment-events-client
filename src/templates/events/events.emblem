@@ -1,10 +1,10 @@
 #main
   #side-menu
-      .navigation
-        h2 Events
-        button{ action 'centerToUser' } Near You
-        button{ action 'boundToEvents' } All Events
-      ul.items
-        each event in controller
-          Opengov.EventView
+    .navigation
+      h2 Events
+      button{ action 'centerToUser' } Near You
+      button{ action 'boundToEvents' } All Events
+    ul.items
+      each event in controller
+        = view Opengov.EventView
   = view Opengov.MapView id="map"

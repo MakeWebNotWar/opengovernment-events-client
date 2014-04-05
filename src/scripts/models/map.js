@@ -1,4 +1,4 @@
-Opengov.Map = {
+window.Opengov.Map = {
   mapInit: function(){
     var self = this,
         center = new Microsoft.Maps.Location(43.7000, -79.4000);
@@ -70,7 +70,9 @@ Opengov.Map = {
         locations.push(location);
       }
       var boundingBox = Microsoft.Maps.LocationRect.fromLocations(locations);
-      return boundingBox;
+      Opengov.Map.map.setView({
+        bounds: boundingBox
+      });
     }
   }
 }

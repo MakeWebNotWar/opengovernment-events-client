@@ -18,12 +18,6 @@ Opengov.IndexRoute = Ember.Route.extend({
 });
 
 Opengov.EventsRoute = Ember.Route.extend({
-  renderTemplate: function(){
-    this.render('events/events', {
-      outlet: "main",
-      into: "application"
-    });
-  },
   model: function(){
     return this.store.find('event');
   }

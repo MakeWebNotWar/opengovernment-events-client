@@ -4,6 +4,6 @@ Opengov.MapView = Ember.View.extend({
 
     map.entities.push(Opengov.Map.eventsPushPinsLayer);
 
-    this.$(window).resize();
+    $(window).resize();
   }
 });
