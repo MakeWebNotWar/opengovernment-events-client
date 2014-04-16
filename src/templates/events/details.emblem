@@ -17,11 +17,11 @@
               br
               '{{location.city}}, {{location.province}}
             li class="event-organizer"
-              p
+              h3
                 'Organized by:
-                br
+              p
                 '{{user.firstname}} {{user.lastname}}
-              .circle-image
+              .square-image
                 '{{gravatar-image user.gravatarID}}
   #comments
     h1 Conversations

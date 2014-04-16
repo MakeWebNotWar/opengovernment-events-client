@@ -5,7 +5,6 @@ Opengov.EventsController = Ember.ArrayController.extend({
       Opengov.Map.centerToUser();
     },
     boundToEvents: function(){
-      console.log('hello');
       a = Opengov.Map.setBoundingBox(Opengov.Map.eventsPushPinsLayer);
     }
   },

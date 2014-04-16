@@ -1,0 +1,12 @@
+#login
+  if errorMessage
+    p {{errorMessage}}
+  if loggedIn
+    h1 hello {{user_firstname}}
+    button click="logout" Logout
+  else
+    h1 Hello
+    form submit="login"
+      = input valueBinding="user_email" placeholder="Email"
+      = input valueBinding="user_password" placeholder="Password" type="password"
+      = input class="button" type="submit" value="login"

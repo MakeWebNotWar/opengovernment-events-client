@@ -1,28 +1,24 @@
-Opengov.LoginController = Ember.ObjectController.extend({
-  reset: function() {
-    this.setProperties({
-      username: "",
-      password: "",
-      errorMessage: ""
-    });
-  },
-  login: function() {
-    var self = this, data = this.getProperties('username', 'password');
+Opengov.LoginController = Ember.Controller.extend({
+  needs: ['application'],
+  
+  loggedIn: Ember.computed.alias('controllers.application.loggedIn'),
+  
+  user_email: Ember.computed.alias('controllers.application.user_email'),
+  
+  user_firstname: Ember.computed.alias('controllers.application.user_firstname'),
 
-    // Clear out any error messages.
-    this.set('errorMessage', null);
+  user_lastname: Ember.computed.alias('controllers.application.user_lastname'),
 
-    Ember.$.post('/auth.json', data).then(function(response) {
+  user_password: Ember.computed.alias('controllers.application.user_password'),
+  
+  errorMessage: Ember.computed.alias('controllers.application.errorMessage'),
 
-      self.set('errorMessage', response.message);
-      if (response.success) {
-        // Save the token and transition to where originally intended.
-        self.set('token', response.token);
-      }
-    });
-  },
-  coordinates: localStorage.coordinates,
-  coordinatesChanged: function(){
-    localStorage.coordinates = this.get('coordinates');
-  }.observes('coordinates')
+  actions: {
+    login: function(){
+      this.get('controllers.application').send('login');
+    },
+    logout: function(){
+      this.get('controllers.application').send('logout');
+    }
+  }
 });

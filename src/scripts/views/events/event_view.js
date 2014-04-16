@@ -37,14 +37,7 @@ Opengov.EventView = Ember.View.extend({
   toggleEventInfo: function(ev){
     var coordinates = ev.target._location,
         lat = coordinates.latitude,
-        lng = coordinates.longitude,
-        center = new Microsoft.Maps.Location(lat, lng);
-
-    Opengov.Map.map.setView({
-      center: center
-    });
-
-    console.log(this.get('controller.id'));
+        lng = coordinates.longitude;
 
     this.get('controller').transitionToRoute('event', this.get('controller.id'));
   }
