@@ -1,3 +1,9 @@
-= partial "menu/main"
-= outlet main
+= view Opengov.MainMenuView
+#main
+  = outlet main
 = outlet comments
+footer
+  p
+    'Crafted with love by 
+    a href="http://peopleandcode.com" title="People & Code Inc." target="_blank"
+      'People & Code

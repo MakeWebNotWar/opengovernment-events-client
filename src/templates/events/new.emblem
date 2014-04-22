@@ -1,0 +1,18 @@
+if loggedIn
+  #login-box
+    h1 New Event
+    if errorMessage
+      p {{errorMessage}}
+
+    form submit="create"
+      = input valueBinding="name" placeholder="Event Name"
+      = input valueBinding="description" placeholder="Event Description" type="textarea"
+      = input valueBinding="url" placeholder="Event URL"
+      = input valueBinding="start_date" placeholder="Event Start Date and Time"
+      = input valueBinding="end_date" placeholder="Event End Date and Time"
+      = input valueBinding="type" placeholder="Event Type"
+      = input type="hidden" valueBinding="user"
+      button class="button" Create
+else
+  h1 You must login to create a new event.
+  = link-to 'login'

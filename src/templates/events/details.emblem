@@ -25,9 +25,12 @@
                 '{{gravatar-image user.gravatarID}}
   #comments
     h1 Conversations
-    ul
-      if comments
+    if comments
+      = view Opengov.CommentNewView
+      ul
         each comment in comments
           = view Opengov.CommentView
-      else
-        'Currently no conversations
+    else
+      'Currently no conversations
+      = view Opengov.CommentNewView
+    

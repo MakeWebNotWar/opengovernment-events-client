@@ -3,5 +3,5 @@ Opengov.CommentsController = Ember.ArrayController.extend({
 });
 
 Opengov.CommentController = Ember.ObjectController.extend({
-  needs: ['user']  
+  needs: ['user']
 });

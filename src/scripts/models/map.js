@@ -1,19 +1,18 @@
 window.Opengov.Map = {
   mapInit: function(){
-    var self = this,
-        center = new Microsoft.Maps.Location(43.7000, -79.4000);
+    var center = new Microsoft.Maps.Location(43.7000, -79.4000);
 
-    self.map = window.Opengov.Map.map = new Microsoft.Maps.Map(document.getElementById("map"), {
+    this.map = window.Opengov.Map.map = new Microsoft.Maps.Map(document.getElementById("map"), {
       credentials:"AtXaY5ngrjFXFtDzCQ634BPmhEpiqkz-jm1mox73DLiRD9IW1jUq7iO4iKvCGfvF",
       mapTypeId: Microsoft.Maps.MapTypeId.road,
-      zoom: 10,
+      zoom: 3,
       center: center,
       showLogo: false,
       showMapTypeSelector: false,
       showScalebar: false,
     });
 
-    return self.map;
+    return this.map;
   },
   centerToUser: function(){
     navigator.geolocation.getCurrentPosition(

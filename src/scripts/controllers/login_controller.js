@@ -9,6 +9,8 @@ Opengov.LoginController = Ember.Controller.extend({
 
   user_lastname: Ember.computed.alias('controllers.application.user_lastname'),
 
+  user_gravatarID: Ember.computed.alias('controllers.application.user_gravatarID'),
+
   user_password: Ember.computed.alias('controllers.application.user_password'),
   
   errorMessage: Ember.computed.alias('controllers.application.errorMessage'),

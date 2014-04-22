@@ -1,0 +1,6 @@
+.circle-image
+  '{{gravatar-image user_gravatarID}}
+ul#profile-menu
+  li Profile
+  li click="logout" Logout
+

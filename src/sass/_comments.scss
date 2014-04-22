@@ -1,0 +1,36 @@
+#comments {
+  background-color: $white;
+  color: $dark_grey;
+  padding: 20px;
+  float: right;
+  h1,h2,h3,h4,h5,h6 {
+    margin-top: 0px;
+  }
+  ul{
+    list-style: none;
+    li {
+      padding: 30px 10px;
+      display: block;
+      border-bottom: 1px solid $cream;
+      overflow: hidden;
+      .circle-image {
+        margin-right: 20px;
+        float: left;
+      }
+    }
+    &.actions {
+      float: right;
+      li {
+        display: inline-block;
+        float: left;
+      }
+    }
+  }
+  input, textarea {
+    border: 1px solid #eee;
+    &:focus {
+      border: 1px solid $grey;
+      padding: 20px;
+    }
+  }
+}

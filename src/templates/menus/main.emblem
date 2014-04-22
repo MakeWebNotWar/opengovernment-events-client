@@ -7,7 +7,7 @@
   ul#account-menu
     if loggedIn
       li
-        a href="#" click="logout" Logout
+        = view Opengov.MainMenuProfileView classNames="profile"
     else
       li #{link-to 'login'| Login}
-    li #{link-to 'signup'| Register}
+      li #{link-to 'signup'| Register}

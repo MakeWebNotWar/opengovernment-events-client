@@ -3,5 +3,10 @@ li.comment
     '{{gravatar-image comment.user.gravatarID}}
   h4
     '{{comment.user.firstname}} {{comment.user.lastname}}
+    small
+      '// {{format-date comment.updated_at}}
   p
     comment.text
+  ul.actions
+    li.reply Reply
+    li.delete Delete

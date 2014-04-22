@@ -1,7 +1,7 @@
 // suggest remove
 
-Opengov.EventsView = Ember.View.extend({
-  templateName: 'events/events',
+Opengov.EventsIndexView = Ember.View.extend({
+  elementId: "events-index-view",
   didInsertElement: function(){
     this.scheduleBoundingBox();
   },

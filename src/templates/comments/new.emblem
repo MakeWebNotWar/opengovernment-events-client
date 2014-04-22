@@ -1,0 +1,4 @@
+form submit=create
+  input valueBinding=id type="hidden"
+  textarea valueBinding="text" placeholder="Add a comment"
+  button Add Comment

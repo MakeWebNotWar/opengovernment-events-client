@@ -1,12 +1,13 @@
-#login
-  if errorMessage
-    p {{errorMessage}}
+#login-box
   if loggedIn
-    h1 hello {{user_firstname}}
-    button click="logout" Logout
+    h1 Hello {{user_firstname}}
+    .circle-image
+      ' {{gravatar-image user_gravatarID}}
   else
-    h1 Hello
+    h1 Login
+    if errorMessage
+      p {{errorMessage}}
     form submit="login"
       = input valueBinding="user_email" placeholder="Email"
       = input valueBinding="user_password" placeholder="Password" type="password"
-      = input class="button" type="submit" value="login"
+      button class="button" login
