@@ -20,13 +20,7 @@ Opengov.EventController = Ember.ObjectController.extend({
 
 // });
 
-Opengov.EventsNewController = Ember.Controller.extend({
-  authentication_token: localStorage.authentication_token,
-  user: localStorage.user_id,
-  user_email: localStorage.user_email,
-  loggedIn: localStorage.loggedIn,
-  errorMessage: null,
-
+Opengov.EventsNewController = Ember.Controller.extend(Opengov.Authentication, {
   actions: {
     create: function(){
       var self, store, url, authentication, event, data;
