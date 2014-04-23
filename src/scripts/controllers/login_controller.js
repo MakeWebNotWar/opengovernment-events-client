@@ -1,1 +1,2 @@
-Opengov.LoginController = Ember.Controller.extend(Opengov.Authentication, {});
+Opengov.LoginController = Ember.ObjectController.extend(Opengov.AuthenticationMixin, {
+});

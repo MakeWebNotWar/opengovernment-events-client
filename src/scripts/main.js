@@ -1,12 +1,12 @@
-$(function(){
-  $(window).load(function(){
-    $(window).resize(function(){
-      adjust_main_height();
-      adjust_map_width();
-      adjust_side_menu_height();
-    }).resize();
-  }); 
-});
+// $(function(){
+//   $(window).load(function(){
+//     $(window).resize(function(){
+//       adjust_main_height();
+//       adjust_map_width();
+//       adjust_side_menu_height();
+//     }).resize();
+//   }); 
+// });
 
 function adjust_main_height() {
   var window_height = $(window).height(),
@@ -22,14 +22,14 @@ function adjust_map_width() {
       side_menu_width = $('#side-menu').outerWidth(),
       diff = window_width - side_menu_width;
 
-  $('#map, #form-area, #comments').outerWidth(diff);
+  // $('#map').outerWidth(diff);
 
-  // crappy Chrome 34 fix for map load issues...
-  map_width = $('#map').width();
-  map_height = $('#map').height();
-  if (Opengov.Map.map){
-    Opengov.Map.map.setOptions({height: map_height, width: map_width });
-  }
+  // // crappy Chrome 34 fix for map load issues...
+  // map_width = $('#map').width();
+  // map_height = $('#map').height();
+  // if (Opengov.Map.map){
+  //   Opengov.Map.map.setOptions({height: map_height, width: map_width });
+  // }
 }
 
 function adjust_side_menu_height(){

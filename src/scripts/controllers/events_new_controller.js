@@ -1,26 +1,4 @@
-Opengov.EventsIndexController = Ember.ArrayController.extend({
-  itemController: 'event',
-  actions: {
-    centerToUser: function(){
-      Opengov.Map.centerToUser();
-    },
-    boundToEvents: function(){
-      a = Opengov.Map.setBoundingBox(Opengov.Map.eventsPushPinsLayer);
-    }
-  },
-
-});
-
-Opengov.EventController = Ember.ObjectController.extend({
-  needs: ['comment', 'user'],
-  itemController: 'event.details'
-});
-
-// Opengov.EventDetailsController = Ember.ObjectController.extend({
-
-// });
-
-Opengov.EventsNewController = Ember.Controller.extend(Opengov.Authentication, {
+Opengov.EventsNewController = Ember.Controller.extend(Opengov.AuthenticationMixin, {
   actions: {
     create: function(){
       var self, store, url, authentication, event, data;

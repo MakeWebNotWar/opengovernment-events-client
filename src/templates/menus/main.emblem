@@ -1,13 +1,12 @@
-#top-menu
-  ul#main-menu
-    li.logo #{link-to 'index'| Open Government (beta)}
-    li #{link-to 'events'| Events}
+ul#main-menu
+  li.logo #{link-to 'index'| Open Government (beta)}
+  li #{link-to 'events'| Events}
+  li
+    a href="http://data.webnotwar.ca" target="_blank" OpenData Datasets
+ul#account-menu
+  if loggedIn
     li
-      a href="http://data.webnotwar.ca" target="_blank" OpenData Datasets
-  ul#account-menu
-    if loggedIn
-      li
-        = view Opengov.MainMenuProfileView classNames="profile"
-    else
-      li #{link-to 'login'| Login}
-      li #{link-to 'signup'| Register}
+      = view Opengov.MainMenuProfileView classNames="profile"
+  else
+    li #{link-to 'login'| Login}
+    li #{link-to 'signup'| Register}

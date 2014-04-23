@@ -1,0 +1,7 @@
+.navigation
+  button click='setBoundingBox' title="All events happening soon" All Events
+  button click='centerToUser' class="near" title="See events near you" Near You
+  = link-to 'events.new' classNames='add-event' title="Add an event"| +
+ul.items
+  each event in controller
+    = view Opengov.EventView

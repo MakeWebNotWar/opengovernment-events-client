@@ -1,0 +1,9 @@
+h1 Conversations
+if comments
+  = view Opengov.CommentNewView
+  ul
+    each comment in comments
+      = view Opengov.CommentView
+else
+  'Currently no conversations
+= view Opengov.CommentNewView

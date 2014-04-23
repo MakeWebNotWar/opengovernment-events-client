@@ -1,8 +1,56 @@
-Opengov.MapController = Ember.ObjectController.extend(Opengov.MapMixin, {  
+Opengov.MapMixin = Ember.Mixin.create({
+  map: function(){
+    var self, center, map;
+
+    self = this;
+
+    center = new Microsoft.Maps.Location(43.7000, -79.4000);
+    
+    map = new Microsoft.Maps.Map(document.getElementById("map"), {
+      credentials:"AtXaY5ngrjFXFtDzCQ634BPmhEpiqkz-jm1mox73DLiRD9IW1jUq7iO4iKvCGfvF",
+      mapTypeId: Microsoft.Maps.MapTypeId.road,
+      zoom: 5,
+      center: center,
+      showLogo: false,
+      showMapTypeSelector: false,
+      showScalebar: false,
+    });
+
+    this.set('map', map);
+  },
+
+  pushPinLayer: new Microsoft.Maps.EntityCollection(),
+
+  locations: [],
+
+  addPushPins: function(){
+    var self, map, pushpins;
+
+    self = this;
+    map = self.map;
+
+    self.get('content').forEach(function(ev, index){
+      ev.get('location').then(function(location){
+        if(location){
+          coordinates = location.get('coordinates');
+          lat = coordinates[0],
+          lng = coordinates[1],
+          loc = new Microsoft.Maps.Location(lat, lng),
+          text = (index + 1).toString(),
+          pin = new Microsoft.Maps.Pushpin(loc, {text: text});
+          self.pushPinLayer.push(pin);
+          self.locations.push(loc);
+
+          Microsoft.Maps.Events.addHandler(pin, 'click', function(){
+           self.transitionToRoute('event', ev.id);
+          });
+        }
+      });
+    });
+    map.entities.push(self.pushPinLayer);
+    return self.pushPinLayer;
+  },
   actions: {
-    boundToEvents: function(){
-      this.send('setBoundingBox');
-    },
     setBoundingBox: function(){
       var self, location, locations, boundingBox, map, collection;
       
@@ -15,8 +63,8 @@ Opengov.MapController = Ember.ObjectController.extend(Opengov.MapMixin, {
       map.setView({
         bounds: boundingBox,
         animate:false
-      });  
-    
+      });
+      self.set('map', map);
     },
     
     centerToUser: function(){
@@ -68,9 +116,9 @@ Opengov.MapController = Ember.ObjectController.extend(Opengov.MapMixin, {
       pin = new Microsoft.Maps.Pushpin(loc, {text: text});
 
       self.map.entities.push(pin);
-      this.centerMapToUser(coordinates);
+      this.centerMapToCoordinates(coordinates);
     },
-    centerMapToUser: function(coordinates){
+    centerMapToCoordinates: function(coordinates){
       var self, lat, lng;
 
       self = this;
@@ -83,4 +131,5 @@ Opengov.MapController = Ember.ObjectController.extend(Opengov.MapMixin, {
       });
     },
   }
+
 });

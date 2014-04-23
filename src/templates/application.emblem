@@ -1,7 +1,6 @@
-= view Opengov.MainMenuView
+= view Opengov.MainMenuView id="top-menu"
 #main
   = outlet main
-= outlet comments
 footer
   p
     'Crafted with love by 
