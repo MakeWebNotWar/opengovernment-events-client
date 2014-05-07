@@ -5,6 +5,7 @@ Opengov.EventController = Ember.ObjectController.extend(Opengov.MapMixin, {
       var self, store, url, data;
 
       self = this;
+      window.ray = self;
       store = self.store.adapterFor('application');
       url = [store.host, store.namespace, 'comments'].join('/');
 
@@ -12,7 +13,7 @@ Opengov.EventController = Ember.ObjectController.extend(Opengov.MapMixin, {
         comment: {
           event_id: self.get('id'),
           text: self.get('new_comment_text'),
-          owner: self.get('session.user_id')
+          user_id: self.get('session.user_id')
         }
       };
 
@@ -28,13 +29,14 @@ Opengov.EventController = Ember.ObjectController.extend(Opengov.MapMixin, {
       }).then(
         function(response) {
 
-          if (response.success) {
-            console.log(response.message);
-          }
-          else {
-            console.log(response.message);
-            self.set('errorMessage', response.message);
-          }
+          
+          comment = self.get('store').push('comment', response.comment);
+
+          self.get('comments').pushObject(comment);
+          console.log(comment);
+          console.log(response);
+          
+        
         },
         function(response){
           self.set('errorMessage', response.responseJSON.message)
