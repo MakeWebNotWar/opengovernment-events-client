@@ -1,4 +1,4 @@
-Opengov.LocationsRoute = Ember.Route.extend({
+Opengov.LocationsIndexRoute = Ember.Route.extend({
   renderTemplate: function(){
     this.render('locations/index');
   },

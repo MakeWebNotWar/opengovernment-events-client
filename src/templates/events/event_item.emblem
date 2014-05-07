@@ -1,6 +1,6 @@
 li class="item"
   a
-    h3=event.name
+    h3 {{event.name}}
     ul class="info"
       li class="date"
         '{{format-date event.start_date}}

@@ -1,4 +1,4 @@
-Opengov.EventsNewController = Ember.Controller.extend(Opengov.AuthenticationMixin, {
+Opengov.EventsNewController = Ember.Controller.extend({
   actions: {
     create: function(){
       var self, store, url, authentication, event, data;

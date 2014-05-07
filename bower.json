@@ -9,6 +9,7 @@
   "devDependencies": {
     "ember-mocha-adapter": "0.1.2",
     "emblem.js": "*",
-    "gravatarjs": "~1.0.0"
+    "gravatarjs": "~1.0.0",
+    "ember-simple-auth": "~0.3.1"
   }
 }

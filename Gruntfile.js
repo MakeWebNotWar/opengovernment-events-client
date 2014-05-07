@@ -189,6 +189,7 @@ module.exports = function (grunt) {
             app: 'js/app.js',
             ember: 'js/libs/ember/ember.js',
             ember_data: 'js/libs/ember-data/ember-data.js',
+            ember_simple_auth: 'js/libs/ember-simple-auth/ember-simple-auth.js',
             moment: 'js/libs/momentjs/moment.js',
             handlebars: 'js/libs/handlebars/handlebars.runtime.js',
             jquery: 'js/libs/jquery/jquery.js',
@@ -222,7 +223,8 @@ module.exports = function (grunt) {
             'ember-data/ember-data.js', 
             'jquery/jquery.js', 
             'handlebars/handlebars.runtime.js',
-            'momentjs/moment.js'
+            'momentjs/moment.js',
+            'ember-simple-auth/ember-simple-auth.js'
           ],
           dest: '<%= yeoman.dev %>/js/libs/'
         }]
@@ -342,17 +344,13 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'clean:dev',
-    'replace:dev',
-    'useminPrepare',
-    'concurrent:dev',
-    'neuter:src',
-    'concat',
-    'cssmin',
-    'uglify',
-    'copy',
-    'rev',
-    'usemin'
+    'clean:server',
+    'haml:src',
+    'copy:src',
+    'compass:src',
+    'replace:src',
+    'concurrent:server',
+    'neuter:src'
   ]);
 
   grunt.registerTask('default', [

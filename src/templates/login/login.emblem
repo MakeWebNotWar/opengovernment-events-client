@@ -1,5 +1,5 @@
 #login-box
-  if loggedIn
+  if session.isAuthenticated
     h1 Hello {{user_firstname}}
     .circle-image
       ' {{gravatar-image user_gravatarID}}
@@ -7,7 +7,7 @@
     h1 Login
     if errorMessage
       p {{errorMessage}}
-    form submit="login"
-      = input valueBinding="user_email" placeholder="Email"
-      = input valueBinding="user_password" placeholder="Password" type="password"
-      button class="button" login
+    form submit="authenticate"
+      = input valueBinding="identification" placeholder="Email"
+      = input valueBinding="password" placeholder="Password" type="password"
+      button class="button" Login

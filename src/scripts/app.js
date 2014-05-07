@@ -3,6 +3,9 @@ var Opengov = window.Opengov = Ember.Application.create({
 });
 
 /* Order and include as you please.*/
+require('scripts/simple-auth/{,*/}*');
+require('scripts/initializers/{,*/}*');
+require('scripts/plugins/{,*/}*');
 require('scripts/mixins/{,*/}*');
 require('scripts/store');
 require('scripts/models/{,*/}*');

@@ -4,7 +4,7 @@ ul#main-menu
   li
     a href="http://data.webnotwar.ca" target="_blank" OpenData Datasets
 ul#account-menu
-  if loggedIn
+  if session.isAuthenticated
     li
       = view Opengov.MainMenuProfileView classNames="profile"
   else
