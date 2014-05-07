@@ -1,2 +1,2 @@
-= view Opengov.EventsSideMenuView id="side-menu"
 = view Opengov.MapView id="map"
+= view Opengov.EventsListView id="side-menu"

@@ -10,8 +10,7 @@ $divide_border: $peach;
 #side-menu {
   background: $menu_background;
   z-index: 100;
-  display: block;
-  float: left;
+  display: inline-block;
   margin: 0;
   padding: 0;
   width: 330px;

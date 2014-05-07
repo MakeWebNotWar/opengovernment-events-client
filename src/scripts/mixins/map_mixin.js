@@ -1,5 +1,5 @@
 Opengov.MapMixin = Ember.Mixin.create({
-  map: function(){
+  mapInit: function(){
     var self, center, map;
 
     self = this;
@@ -19,12 +19,12 @@ Opengov.MapMixin = Ember.Mixin.create({
     this.set('map', map);
   },
 
-  pushPinLayer: new Microsoft.Maps.EntityCollection(),
+  // pushPinLayer: new Microsoft.Maps.EntityCollection(),
 
   locations: [],
 
   addPushPins: function(){
-    var self, map, pushpins;
+    var self, map, pin;
 
     self = this;
     map = self.map;
@@ -38,17 +38,20 @@ Opengov.MapMixin = Ember.Mixin.create({
           loc = new Microsoft.Maps.Location(lat, lng),
           text = (index + 1).toString(),
           pin = new Microsoft.Maps.Pushpin(loc, {text: text});
-          self.pushPinLayer.push(pin);
+          // self.pushPinLayer.push(pin);
+          map.entities.push(pin);
           self.locations.push(loc);
 
           Microsoft.Maps.Events.addHandler(pin, 'click', function(){
            self.transitionToRoute('event', ev.id);
           });
+          ev.set('pin', pin);
         }
+        
       });
     });
-    map.entities.push(self.pushPinLayer);
-    return self.pushPinLayer;
+    // map.entities.push(self.pushPinLayer);
+    // return self.pushPinLayer;
   },
   actions: {
     setBoundingBox: function(){

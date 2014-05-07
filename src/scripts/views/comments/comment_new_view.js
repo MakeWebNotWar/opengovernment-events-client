@@ -1,9 +1,6 @@
 Opengov.CommentNewView = Ember.View.extend({
   templateName: 'comments/new',
-  actions: {
-    createComment: function(){
-      data = this.get('text');
-      console.log(data);
-    }
+  didInsertElement: function(){
+    this.get('controller').set('new_comment_text', "");
   }
 });

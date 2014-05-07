@@ -2,7 +2,7 @@
 
 Opengov.CustomAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
 
-  serverTokenEndpoint: "http://localhost:3000/api/v1/authentication",
+  serverTokenEndpoint: "http://api.peopleandcode.com/api/v1/authentication",
 
    authenticate: function(credentials) {
     var _this = this;

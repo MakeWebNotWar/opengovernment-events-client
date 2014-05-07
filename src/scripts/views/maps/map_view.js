@@ -1,9 +1,31 @@
 Opengov.MapView = Ember.View.extend({
   didInsertElement: function(){
-    var self, map, topMenuHeight, footerHeight, sideMenuWidth, widthDiff, locations, collection;
+    var self;
 
     self = this;
-    topMenuHeight = $('#top-men').outerHeight();
+
+    $(window).bind('resize.mapview', function(){
+        self.resizeElement();
+    }).trigger('resize.mapview');
+
+    self.get('controller').mapInit();
+    self.get('controller').map;
+    self.get('controller').addPushPins();
+
+    setTimeout(function(){
+      self.get('controller').send('setBoundingBox');
+    }, 1000);
+
+
+  },
+  willDestroyElement: function(){
+    $(window).unbind('resize.mapview');
+  },
+  resizeElement: function(){
+    var self, topMenuHeight, footerHeight, sideMenuWidth, widthDiff;
+    self = this;
+
+    topMenuHeight = $('#top-menu').outerHeight();
     footerHeight = $('footer').outerHeight();
     sideMenuWidth = $('#side-menu').outerWidth();
     widthDiff = $(window).outerWidth() - sideMenuWidth;
@@ -11,13 +33,6 @@ Opengov.MapView = Ember.View.extend({
 
     self.$().outerWidth(widthDiff);
     self.$().outerHeight(heightDiff);
-
-    self.get('controller').map();
-    self.get('controller').addPushPins();
-
-    setTimeout(function(){
-      self.get('controller').send('setBoundingBox');
-    }, 1000);
 
   }
 });

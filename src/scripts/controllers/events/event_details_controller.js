@@ -1,0 +1,1 @@
+Opengov.EventDetailsController = Ember.ObjectController.extend({});

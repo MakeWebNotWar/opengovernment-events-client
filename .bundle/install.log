@@ -1,0 +1,12 @@
+# Logfile created on 2014-05-07 11:33:51 -0400 by logger.rb/36483
+I, [2014-05-07T11:33:51.312356 #4869]  INFO -- : 0:  chunky_png (1.2.8) from /Users/raykao/.rvm/gems/ruby-2.0.0-p247/specifications/chunky_png-1.2.8.gemspec
+I, [2014-05-07T11:33:51.312717 #4869]  INFO -- : 0:  fssm (0.2.10) from /Users/raykao/.rvm/gems/ruby-2.0.0-p247/specifications/fssm-0.2.10.gemspec
+I, [2014-05-07T11:33:51.312982 #4869]  INFO -- : 0:  sass (3.2.14) from /Users/raykao/.rvm/gems/ruby-2.0.0-p247/specifications/sass-3.2.14.gemspec
+I, [2014-05-07T11:33:54.092924 #4869]  INFO -- : 0:  compass (0.12.2) from /Users/raykao/.rvm/gems/ruby-2.0.0-p247/specifications/compass-0.12.2.gemspec
+I, [2014-05-07T11:33:55.017514 #4869]  INFO -- : 0:  tilt (2.0.0) from /Users/raykao/.rvm/gems/ruby-2.0.0-p247/specifications/tilt-2.0.0.gemspec
+I, [2014-05-07T11:33:56.235361 #4869]  INFO -- : 0:  emblem (0.0.2) from /Users/raykao/.rvm/gems/ruby-2.0.0-p247/specifications/emblem-0.0.2.gemspec
+I, [2014-05-07T11:33:56.235688 #4869]  INFO -- : 0:  execjs (2.0.2) from /Users/raykao/.rvm/gems/ruby-2.0.0-p247/specifications/execjs-2.0.2.gemspec
+I, [2014-05-07T11:33:56.932890 #4869]  INFO -- : 0:  haml (4.0.5) from /Users/raykao/.rvm/gems/ruby-2.0.0-p247/specifications/haml-4.0.5.gemspec
+I, [2014-05-07T11:33:57.745777 #4869]  INFO -- : 0:  sprockets (1.0.2) from /Users/raykao/.rvm/gems/ruby-2.0.0-p247/specifications/sprockets-1.0.2.gemspec
+I, [2014-05-07T11:33:58.640041 #4869]  INFO -- : 0:  hamlbars (2.1.0) from /Users/raykao/.rvm/gems/ruby-2.0.0-p247/specifications/hamlbars-2.1.0.gemspec
+I, [2014-05-07T11:33:58.640314 #4869]  INFO -- : 0:  bundler (1.5.1) from /Users/raykao/.rvm/gems/ruby-2.0.0-p247/specifications/bundler-1.5.1.gemspec

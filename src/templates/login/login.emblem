@@ -2,7 +2,7 @@
   if session.isAuthenticated
     h1 Hello {{user_firstname}}
     .circle-image
-      ' {{gravatar-image user_gravatarID}}
+      ' {{gravatar-image session.user_gravatarID}}
   else
     h1 Login
     if errorMessage
