@@ -1,6 +1,5 @@
 Opengov.CommentView = Ember.View.extend({
   templateName: 'comments/comment',
-  didInsertElement: function(){
-    
-  }
+  tagName: 'li',
+  classNames: ["comment"]
 });

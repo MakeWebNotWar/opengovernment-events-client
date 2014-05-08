@@ -4,19 +4,19 @@
   padding: 20px;
   display: inline-block;
   overflow: scroll;
-  float: right;
   width: 50%;
   h1,h2,h3,h4,h5,h6 {
     margin-top: 0px;
   }
   ul{
+    overflow:scroll;
     list-style: none;
     li {
       padding: 30px 10px;
-      display: block;
       border-bottom: 1px solid $cream;
       overflow: hidden;
       .circle-image {
+        width: 100px;
         margin-right: 20px;
         float: left;
       }
@@ -34,6 +34,12 @@
     &:focus {
       border: 1px solid $grey;
       padding: 20px;
+    }
+  }
+  a {
+    color: $blue;
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

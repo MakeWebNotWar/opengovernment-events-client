@@ -1,4 +1,7 @@
-
-form submit=createComment
-  Ember.TextArea valueBinding="new_comment_text"
-  button Add Comment
+if session.isAuthenticated
+  form submit=createComment
+    Ember.TextArea valueBinding="new_comment_text"
+    button Add Comment
+else
+  p 
+   | Please {{link-to 'login' | Login}} to make a comment
