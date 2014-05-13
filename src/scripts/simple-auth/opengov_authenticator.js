@@ -2,7 +2,16 @@
 
 Opengov.CustomAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
 
-  serverTokenEndpoint: "http://api.peopleandcode.com/api/v1/authentication",
+  serverTokenEndpoint: function(){
+    var self, store, host, namespace, url;
+
+    self = this;
+    store = Opengov.ApplicationAdapter.create();
+    host = store.get('host');
+    namespace = store.get('namespace');
+    url = [host, namespace, "authentication"].join('/')
+    return url;
+  },
 
    authenticate: function(credentials) {
     var _this = this;
@@ -44,7 +53,7 @@ Opengov.CustomAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
       Ember.Logger.warn('Credentials are transmitted via an insecure connection - use HTTPS to keep them secure.');
     }
     return Ember.$.ajax({
-      url:         this.serverTokenEndpoint,
+      url:         this.serverTokenEndpoint(),
       type:        'POST',
       data:        data,
       dataType:    'json',

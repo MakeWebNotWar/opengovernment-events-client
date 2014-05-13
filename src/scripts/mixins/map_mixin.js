@@ -29,7 +29,7 @@ Opengov.MapMixin = Ember.Mixin.create({
     self = this;
     map = self.map;
 
-    self.get('content').forEach(function(ev, index){
+    self.get('content').sortBy('start_date').forEach(function(ev, index){
       ev.get('location').then(function(location){
         if(location){
           coordinates = location.get('coordinates');

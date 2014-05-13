@@ -5,19 +5,21 @@ Opengov.CommentsView = Ember.View.extend({
 
     self = this;
 
-    $(window).bind('resize.commentsview', function(){
+    $(window).on('resize.commentsview', function(){
       self.resizeElement();
-    }).trigger('resize.commentsview');
+    }).resize();
+  },
+  willDestroyElement: function(){
+    $(window).off('resize.commentsview');
   },
   resizeElement: function(){
-    var self, windowHeight, topMenuHeight, footerHeight, heightDiff;
+    var windowHeight, topMenuHeight, footerHeight, heightDiff;
 
-    self = this;
     windowHeight = $(window).outerHeight();
     topMenuHeight = $('#top-menu').outerHeight();
     footerHeight = $('footer').outerHeight();
     heightDiff = windowHeight - topMenuHeight - footerHeight; 
   
-    self.$().outerHeight(heightDiff);    
+    this.$().outerHeight(heightDiff);    
   }
 });

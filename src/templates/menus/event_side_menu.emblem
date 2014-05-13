@@ -1,6 +1,6 @@
 .navigation
   h2 Event Details
-ul.items
+ul
   li.item
     a
       h3
