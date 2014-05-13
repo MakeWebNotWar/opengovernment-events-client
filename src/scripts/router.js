@@ -15,4 +15,5 @@ Opengov.Router.map(function() {
   this.route('profile');
   this.route('login');
   this.route('signup');
+  this.resource('confirmation', {path: "confirmation/:confirmation_token"});
 });

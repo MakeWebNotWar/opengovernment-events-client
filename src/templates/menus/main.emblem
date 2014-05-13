@@ -9,4 +9,4 @@ ul#account-menu
       = view Opengov.MainMenuProfileView classNames="profile"
   else
     li #{link-to 'login'| Login}
-    li #{link-to 'signup'| Register}
+    li #{link-to 'signup'| Signup}
