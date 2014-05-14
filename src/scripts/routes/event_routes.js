@@ -4,7 +4,7 @@ Opengov.EventsIndexRoute = Ember.Route.extend({
   }
 });
 
-Opengov.EventRoute = Ember.Route.extend({
+Opengov.EventRoute = Ember.Route.extend(Opengov.ProtectedRouteMixin, {
   renderTemplate: function(){
     this.render('events/details', {
       outlet: "main"

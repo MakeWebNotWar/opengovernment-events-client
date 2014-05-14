@@ -1,11 +1,10 @@
 Opengov.EventController = Ember.ObjectController.extend(Opengov.MapMixin, {
-  needs: ['comment', 'user'],
+  needs: ['comment', 'user', 'login'],
   actions: {
     createComment: function(){
       var self, store, url, data;
 
       self = this;
-      window.ray = self;
       store = self.store.adapterFor('application');
       url = [store.host, store.namespace, 'comments'].join('/');
 
@@ -33,8 +32,32 @@ Opengov.EventController = Ember.ObjectController.extend(Opengov.MapMixin, {
         function(response){
           self.set('errorMessage', response.message)
         }
-      );
-      
+      );  
+    },
+    destroyComment: function(comment){
+      var self, store, url;
+
+      self = this;
+      store = self.store.adapterFor('application');
+      url = [store.host, store.namespace, 'comments', comment.id].join('/');
+
+      Ember.$.ajax({
+        type: "DELETE",
+        url: url,
+        headers: {
+          "X-Authentication-Token": self.get('session.authentication_token'),
+          "X-User-Email": self.get('session.user_email')
+        }
+      }).then(
+        function(){
+          self.get('comments').removeObject(comment);
+          console.log("removed comment");
+        },
+        function(response){
+          console.log(response);
+        }
+      )
     }
+
   }
 });

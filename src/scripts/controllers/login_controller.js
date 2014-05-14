@@ -1,4 +1,3 @@
 Opengov.LoginController = Ember.Controller.extend(Ember.SimpleAuth.LoginControllerMixin, {
-  authenticatorFactory: 'authenticator:custom',
-  errorMessage: "Hello World"
+  authenticatorFactory: 'authenticator:custom'
 });

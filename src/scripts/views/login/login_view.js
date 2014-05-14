@@ -11,11 +11,14 @@ Opengov.LoginView = Ember.View.extend({
     }).trigger('resize.loginview');
   },
   resizeView: function(){
-    var windowHeight = $(window).outerHeight(),
-        topMenuHeight = $('#top-menu').outerHeight(),
-        footerHeight = $('footer').outerHeight(),
-        diff = windowHeight - (topMenuHeight + footerHeight);
+    var self, windowHeight, topMenuHeight, footerHeight, diff;
 
-    this.$().css('min-height', diff);
+    self = this;
+    windowHeight = $(window).outerHeight(),
+    topMenuHeight = $('#top-menu').outerHeight(),
+    footerHeight = $('footer').outerHeight(),
+    diff = windowHeight - (topMenuHeight + footerHeight);
+
+    self.$().css('min-height', diff);
   }
 });
