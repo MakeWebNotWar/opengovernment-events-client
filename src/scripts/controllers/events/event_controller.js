@@ -12,34 +12,26 @@ Opengov.EventController = Ember.ObjectController.extend(Opengov.MapMixin, {
       data = {
         comment: {
           event_id: self.get('id'),
-          text: self.get('new_comment_text'),
-          user_id: self.get('session.user_id')
+          text: self.get('new_comment_text')
         }
       };
 
-      console.log(data);
       Ember.$.ajax({
         url:url, 
         data: data,
         type: "POST",
         headers: {
-          "authentication-token": self.get('session.authentication_token'),
-          "user-email": self.get('session.user_email')
+          "X-Authentication-Token": self.get('session.authentication_token'),
+          "X-User-Email": self.get('session.user_email')
         }
       }).then(
-        function(response) {
-
-          
+        function(response) {          
           comment = self.get('store').push('comment', response.comment);
 
           self.get('comments').pushObject(comment);
-          console.log(comment);
-          console.log(response);
-          
-        
         },
         function(response){
-          self.set('errorMessage', response.responseJSON.message)
+          self.set('errorMessage', response.message)
         }
       );
       

@@ -6,3 +6,6 @@ h4
     '// {{format-date comment.updated_at}}
 p
   comment.text
+
+if comment.isOwner
+  h1 Hello
