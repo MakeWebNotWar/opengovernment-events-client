@@ -3,9 +3,9 @@
 Opengov.CustomAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
 
   serverTokenEndpoint: function(){
-    var self, store, host, namespace, url;
+    var _this, store, host, namespace, url;
 
-    self = this;
+    _this = this;
     store = Opengov.ApplicationAdapter.create();
     host = store.get('host');
     namespace = store.get('namespace');
@@ -15,6 +15,7 @@ Opengov.CustomAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
 
    authenticate: function(credentials) {
     var _this = this;
+
     return new Ember.RSVP.Promise(function(resolve, reject) {
       var data = { 
         authentication: {
@@ -22,15 +23,18 @@ Opengov.CustomAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
           user_password: credentials.password 
         }
       };
-      _this.makeRequest(data).then(function(response) {
-        Ember.run(function() {
-          resolve(response);
-        });
-      }, function(xhr, status, error) {
-        Ember.run(function() {
-          reject(xhr.responseJSON || xhr.responseText);
-        });
-      });
+      _this.makeRequest(data).then(
+        function(response) {
+          Ember.run(function() {
+            resolve(response);
+          });
+        }, 
+        function(xhr, status, error) {
+          Ember.run(function() {
+            reject(xhr.responseJSON || xhr.responseText);
+          });
+        }
+      );
     });
   },
 

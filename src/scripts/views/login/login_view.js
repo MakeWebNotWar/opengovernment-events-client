@@ -2,7 +2,13 @@ Opengov.LoginView = Ember.View.extend({
   templateName: "login/login",
   elementId: "login-view",
   didInsertElement: function(){
-    this.resizeView();
+    var self;
+
+    self = this;
+
+    self.$(window).bind('resize.loginview', function(){
+      self.resizeView();
+    }).trigger('resize.loginview');
   },
   resizeView: function(){
     var windowHeight = $(window).outerHeight(),

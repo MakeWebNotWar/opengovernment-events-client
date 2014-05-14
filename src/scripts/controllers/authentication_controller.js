@@ -1,1 +1,0 @@
-Opengov.AuthenticationController = Ember.ObjectController.extend({});
