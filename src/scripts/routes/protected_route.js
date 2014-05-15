@@ -1,4 +1,4 @@
-Opengov.ProtectedRouteMixin = Ember.Mixin.create({
+Opengov.ProtectedRoute = Ember.Route.extend({
   beforeModel: function(transition){
     var session;
     session = this.controllerFor('login').get('session');

@@ -14,6 +14,10 @@ Opengov.Router.map(function() {
   this.resource('comments', {path: "comments/:comment_id"});
   this.route('profile');
   this.route('login');
-  this.route('signup');
+  this.resource('signup', function(){
+    this.route('new');
+    this.route('success');
+  });
   this.resource('confirmation', {path: "confirmation/:confirmation_token"});
+  this.resource('profile');
 });

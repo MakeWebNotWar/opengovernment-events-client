@@ -1,4 +1,4 @@
-Opengov.SignupView = Ember.View.extend({
+Opengov.SignupIndexView = Ember.View.extend({
   templateName: "signup/new",
   elementId: "signup-view"
 });

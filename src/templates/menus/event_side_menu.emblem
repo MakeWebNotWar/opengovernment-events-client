@@ -1,6 +1,6 @@
 .navigation
   h2 Event Details
-ul
+ul.items
   li.item
     a
       h3
@@ -19,5 +19,5 @@ ul
             'Organized by:
           p
             '{{user.firstname}} {{user.lastname}}
-          .square-image
+          .circle-image
             '{{gravatar-image user.gravatarID}}

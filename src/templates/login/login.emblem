@@ -10,4 +10,4 @@
     form submit="authenticate"
       = input valueBinding="identification" placeholder="Email"
       = input valueBinding="password" placeholder="Password" type="password"
-      button class="button" Login
+      button class="button success" Login

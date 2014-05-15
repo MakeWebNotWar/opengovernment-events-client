@@ -6,7 +6,6 @@ h4
     '// {{format-date comment.updated_at}}
 p
   comment.text
-  comment.id
 
 if comment.isOwner
   .actions

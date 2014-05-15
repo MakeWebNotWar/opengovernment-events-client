@@ -111,17 +111,6 @@ footer {
   }
 }
 
-.square-image {
-  float: left;
-  border: 3px solid $green;
-  overflow: hidden;
-  display: inline-block;
-  width: 30%;
-  img {
-    width: 100%;
-  }
-}
-
 #main {
   position: relative;
   margin-top: 72px;
@@ -138,3 +127,5 @@ footer {
 @import "login";
 @import "comments";
 @import "signup";
+@import "event_details_view";
+@import "profile";

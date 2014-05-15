@@ -1,0 +1,1 @@
+Opengov.SignupSuccessRoute = Ember.Route.extend({});

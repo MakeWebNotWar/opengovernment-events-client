@@ -24,40 +24,24 @@ Opengov.EventController = Ember.ObjectController.extend(Opengov.MapMixin, {
           "X-User-Email": self.get('session.user_email')
         }
       }).then(
-        function(response) {          
-          comment = self.get('store').push('comment', response.comment);
+        function(response) {
+          var store, comment;
 
-          self.get('comments').pushObject(comment);
+          store = self.store;
+          comment = response.comment;
+          comment = store.push('comment', comment);
+          user = store.find('user', comment.user);
+
+          self.get('comments').then(function(comments){
+            comments.addObject(comment);
+            comment.addObject(user);
+          });
+
         },
         function(response){
           self.set('errorMessage', response.message)
         }
       );  
     },
-    destroyComment: function(comment){
-      var self, store, url;
-
-      self = this;
-      store = self.store.adapterFor('application');
-      url = [store.host, store.namespace, 'comments', comment.id].join('/');
-
-      Ember.$.ajax({
-        type: "DELETE",
-        url: url,
-        headers: {
-          "X-Authentication-Token": self.get('session.authentication_token'),
-          "X-User-Email": self.get('session.user_email')
-        }
-      }).then(
-        function(){
-          self.get('comments').removeObject(comment);
-          console.log("removed comment");
-        },
-        function(response){
-          console.log(response);
-        }
-      )
-    }
-
   }
 });

@@ -16,6 +16,8 @@ Opengov.CommentView = Ember.View.extend({
         self._parentView.content.set('isOwner', result);
       }
     );
+
+    console.log('inserted');
     
   },
 

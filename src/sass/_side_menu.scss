@@ -6,7 +6,6 @@ $item_font: $grey;
 
 $divide_border: $peach;
 
-
 #side-menu {
   background: $menu_background;
   z-index: 100;
@@ -15,9 +14,7 @@ $divide_border: $peach;
   padding: 0;
   width: 330px;
   height: 100%;
-  overflow-y: hidden;
   position: relative;
-  clear: both;
   .navigation {
     width: 100%;
     overflow: hidden;

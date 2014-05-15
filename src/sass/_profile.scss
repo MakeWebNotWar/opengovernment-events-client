@@ -1,0 +1,22 @@
+#profile-view {
+  background: $medium_grey;
+  min-height: 100%;
+  overflow: auto;
+}
+
+#user-info {
+  margin: 0 auto;
+  margin-top: 80px;
+  width: 50%;
+}
+
+#bio {
+  display: block;
+  overflow: hidden;
+  h2 {
+    display: inline-block;
+  }
+  .circle-image {
+    float: left;
+  }
+}

@@ -1,3 +1,4 @@
 Opengov.EventsDetailsView = Ember.View.extend({
-  templateName: 'events/details'
+  templateName: 'events/details',
+  elementId: 'event-details-view'
 });

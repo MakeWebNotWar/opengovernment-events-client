@@ -1,0 +1,11 @@
+#user-info
+  #bio
+    .circle-image
+      ' {{gravatar-image session.user_gravatarID}}
+    h2
+      ' {{firstname}} {{lastname}}
+  #details
+    #comments
+      ul
+        each comment in comments
+          = view Opengov.CommentView

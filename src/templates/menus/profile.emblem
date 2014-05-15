@@ -1,6 +1,8 @@
 .circle-image
   '{{gravatar-image session.user_gravatarID}}
 ul#profile-menu
-  li Profile
-  li click="invalidateSession" Logout
+  li
+    = link-to 'profile' | Profile
+  li
+    a click="invalidateSession" Logout
 
