@@ -1,0 +1,4 @@
+form submit=updateEvent
+  = input valueBinding="name" 
+  button Submit
+button click=reset Cancel

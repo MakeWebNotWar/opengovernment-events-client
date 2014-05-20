@@ -1,4 +1,4 @@
-Opengov.EventController = Ember.ObjectController.extend(Opengov.MapMixin, {
+Opengov.EventIndexController = Ember.ObjectController.extend(Opengov.MapMixin, {
   needs: ['comment', 'user', 'login'],
   actions: {
     createComment: function(){
@@ -29,14 +29,18 @@ Opengov.EventController = Ember.ObjectController.extend(Opengov.MapMixin, {
 
           store = self.store;
           comment = response.comment;
+          
           comment = store.push('comment', comment);
-          user = store.find('user', comment.user);
 
-          self.get('comments').then(function(comments){
-            comments.addObject(comment);
-            comment.addObject(user);
+          $.each(['user', 'event'], function(index, model){
+            comment.get(model).then(function(record){
+              record.get('comments').then(function(comments){
+                comments.addObject(comment);
+              });
+            });  
           });
-
+          
+          
         },
         function(response){
           self.set('errorMessage', response.message)

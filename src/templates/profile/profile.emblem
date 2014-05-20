@@ -2,10 +2,15 @@
   #bio
     .circle-image
       ' {{gravatar-image session.user_gravatarID}}
+  #details
     h2
       ' {{firstname}} {{lastname}}
-  #details
-    #comments
+    #events
+      h3 Your Events
       ul
-        each comment in comments
-          = view Opengov.CommentView
+        each event in events
+          li
+            p
+              = link-to 'event' event | {{event.name}}
+              small 
+                |  comments ({{event.comments.length}})

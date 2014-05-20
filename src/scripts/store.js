@@ -1,5 +1,3 @@
-// Opengov.ApplicationAdapter = DS.FixtureAdapter;
-
 Opengov.ApplicationAdapter = DS.RESTAdapter;
 
 Opengov.ApplicationAdapter.reopen({

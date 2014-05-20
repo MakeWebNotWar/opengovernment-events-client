@@ -20,3 +20,11 @@
     float: left;
   }
 }
+
+#details {
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

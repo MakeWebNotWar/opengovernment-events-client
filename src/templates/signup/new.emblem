@@ -2,6 +2,8 @@
   h1 Signup
   if errorMessage
     p {{errorMessage}}
+  else
+    p * all fields required
   form submit="signup"
     = input valueBinding="firstname" placeholder="First Name"
     = input valueBinding="lastname" placeholder="Last Name"
