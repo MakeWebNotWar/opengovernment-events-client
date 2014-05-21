@@ -382,7 +382,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:server',
     'haml:src',
-    'copy:src',
+    'copy:build',
     'compass:src',
     'concurrent:server',
     'replace:build',
