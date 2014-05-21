@@ -213,7 +213,7 @@ module.exports = function (grunt) {
             handlebars: 'js/libs/handlebars/handlebars.runtime.min.js',
             jquery: 'js/libs/jquery/jquery.min.js',
             templates: 'js/templates/templates.js',
-            store: 'http://api.peopleandcode.com'
+            store: 'https://api.peopleandcode.com'
           }
         },
         files: [
