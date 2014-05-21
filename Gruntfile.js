@@ -193,11 +193,32 @@ module.exports = function (grunt) {
             moment: 'js/libs/momentjs/moment.js',
             handlebars: 'js/libs/handlebars/handlebars.runtime.js',
             jquery: 'js/libs/jquery/jquery.js',
-            templates: 'js/templates/templates.js'
+            templates: 'js/templates/templates.js',
+            store: 'http://localhost:3000'
           }
         },
         files: [
-          {src: '<%= yeoman.dev %>/index.html', dest: '<%= yeoman.dev %>/index.html'}
+          {src: '<%= yeoman.dev %>/index.html', dest: '<%= yeoman.dev %>/index.html'},
+          {src: '<%= yeoman.dev %>/js/app.js', dest: '<%= yeoman.dev %>/js/app.js'}
+        ]
+      },
+      build: {
+        options: {
+          variables: {
+            app: 'js/app.js',
+            ember: 'js/libs/ember/ember.min.js',
+            ember_data: 'js/libs/ember-data/ember-data.min.js',
+            ember_simple_auth: 'js/libs/ember-simple-auth/ember-simple-auth.min.js',
+            moment: 'js/libs/momentjs/moment.js',
+            handlebars: 'js/libs/handlebars/handlebars.runtime.min.js',
+            jquery: 'js/libs/jquery/jquery.min.js',
+            templates: 'js/templates/templates.js',
+            store: "http://api.peopleandcode.com"
+          }
+        },
+        files: [
+          {src: '<%= yeoman.dev %>/index.html', dest: '<%= yeoman.dev %>/index.html'},
+          {src: '<%= yeoman.dev %>/js/app.js', dest: '<%= yeoman.dev %>/js/app.js'}
         ]
       },
       dev: {
@@ -223,6 +244,21 @@ module.exports = function (grunt) {
             'ember-data/ember-data.js', 
             'jquery/jquery.js', 
             'handlebars/handlebars.runtime.js',
+            'momentjs/moment.js',
+            'ember-simple-auth/ember-simple-auth.js'
+          ],
+          dest: '<%= yeoman.dev %>/js/libs/'
+        }]
+      },
+      build: {
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.src %>/bower_components/',
+          src: [
+            'ember/ember.min.js', 
+            'ember-data/ember-data.min.js', 
+            'jquery/jquery.min.js', 
+            'handlebars/handlebars.runtime.min.js',
             'momentjs/moment.js',
             'ember-simple-auth/ember-simple-auth.js'
           ],
@@ -326,9 +362,9 @@ module.exports = function (grunt) {
       'haml:src',
       'copy:src',
       'compass:src',
-      'replace:src',
       'concurrent:server',
       'neuter:src',
+      'replace:src',
       'connect:livereload',
       'watch'
     ]);
@@ -348,8 +384,8 @@ module.exports = function (grunt) {
     'haml:src',
     'copy:src',
     'compass:src',
-    'replace:src',
     'concurrent:server',
+    'replace:build',
     'neuter:src'
   ]);
 
