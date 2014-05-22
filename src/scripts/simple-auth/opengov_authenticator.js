@@ -17,11 +17,15 @@ Opengov.CustomAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
     var _this = this;
 
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      var data = { 
-        authentication: {
-          user_email: credentials.identification, 
-          user_password: credentials.password 
-        }
+      // var data = { 
+      //   authentication: {
+      //     user_email: credentials.identification, 
+      //     user_password: credentials.password 
+      //   }
+      // };
+      var data = {
+        "X-User-Email": credentials.identification,
+        "X-User-Password": credentials.password
       };
       _this.makeRequest(data).then(
         function(response) {
@@ -59,7 +63,8 @@ Opengov.CustomAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
     return Ember.$.ajax({
       url:         this.serverTokenEndpoint(),
       type:        'POST',
-      data:        data,
+      // data:        data,
+      headers:     data,
       dataType:    'json',
       contentType: 'application/x-www-form-urlencoded'
     });

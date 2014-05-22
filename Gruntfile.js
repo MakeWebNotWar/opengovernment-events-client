@@ -42,7 +42,7 @@ module.exports = function (grunt) {
       },
       neuter: {
         files: ['<%= yeoman.src %>/scripts/**/*.js'],
-        tasks: ['neuter:src']
+        tasks: ['neuter:src', 'replace:src']
       },
       livereload: {
         options: {

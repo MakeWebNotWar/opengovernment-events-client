@@ -5,7 +5,6 @@ Opengov.EventIndexRoute = Ember.Route.extend(Opengov.ProtectedRouteMixin, {
     });
   },
   model: function(params){
-    console.log(params);
     return this.modelFor('event')
   }
 });
