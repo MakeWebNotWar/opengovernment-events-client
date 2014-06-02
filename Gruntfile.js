@@ -216,7 +216,7 @@ module.exports = function (grunt) {
             jquery: 'js/libs/jquery/jquery.js',
             templates: 'js/templates/templates.js',
             frontend: 'http://opengov.webnotwar.ca',
-            server_endpoint: 'http://api.peopleandcode.com'
+            server_endpoint: 'https://api.peopleandcode.com'
           }
         },
         files: [
