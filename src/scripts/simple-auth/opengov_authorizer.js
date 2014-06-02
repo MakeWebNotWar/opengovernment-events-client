@@ -6,8 +6,8 @@ Opengov.CustomAuthorizer = Ember.SimpleAuth.Authorizers.Base.extend({
       if (!Ember.SimpleAuth.Utils.isSecureUrl(requestOptions.url)) {
         Ember.Logger.warn('Credentials are transmitted via an insecure connection - use HTTPS to keep them secure.');
       }
-      jqXHR.setRequestHeader('authentication-token', authToken);
-      jqXHR.setRequestHeader('user-email', authEmail);
+      jqXHR.setRequestHeader('X-Authentication-Token', authToken);
+      jqXHR.setRequestHeader('X-User-Email', authEmail);
     }
   }
 });

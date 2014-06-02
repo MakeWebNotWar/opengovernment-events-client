@@ -1,17 +1,16 @@
 Opengov.EventEditController = Ember.ObjectController.extend({
   actions: {
+    updateEvent: function(){
+      this.get('model').save();
+    },
     reset: function(){
       var self;
-
       self = this;
-
-      console.log('reset');
-
       properties = self.get('originalPropertyValues');
       self.setProperties(properties);
-      console.log(properties);  
-      
-      
+      self.get('location').setProperties(properties.location);
+      console.log(properties);
+      this.transitionToRoute('event', this.get('id'));
     }
   }
 });

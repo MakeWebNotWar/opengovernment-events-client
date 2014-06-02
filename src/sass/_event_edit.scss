@@ -1,0 +1,11 @@
+#event-edit-view {
+  background: $medium_grey;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+  #edit {
+    width: 960px;
+    margin: 0 auto;
+    margin-top: 80px;
+  }
+}
