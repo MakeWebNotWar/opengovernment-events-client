@@ -215,8 +215,8 @@ module.exports = function (grunt) {
             handlebars: 'js/libs/handlebars/handlebars.runtime.js',
             jquery: 'js/libs/jquery/jquery.js',
             templates: 'js/templates/templates.js',
-            frontend: 'http://api.peopleandcode.com',
-            server_endpoint: 'http://opengov.webnotwar.ca'
+            frontend: 'http://opengov.webnotwar.ca',
+            server_endpoint: 'http://api.peopleandcode.com'
           }
         },
         files: [
