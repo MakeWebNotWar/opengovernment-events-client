@@ -194,29 +194,20 @@ module.exports = function (grunt) {
             handlebars: 'js/libs/handlebars/handlebars.runtime.js',
             jquery: 'js/libs/jquery/jquery.js',
             templates: 'js/templates/templates.js',
-<<<<<<< HEAD
             frontend: 'http://127.0.0.1/dev',
             server_endpoint: 'http://localhost:3000'
-=======
-            store: 'http://localhost:3000'
->>>>>>> 59d79a575ea330439be1cbce8470c4c45d256e67
           }
         },
         files: [
           {src: '<%= yeoman.dev %>/index.html', dest: '<%= yeoman.dev %>/index.html'},
-<<<<<<< HEAD
           {src: '<%= yeoman.dev %>/js/app.js', dest: '<%= yeoman.dev %>/js/app.js'},
           {src: '<%= yeoman.dev %>/oauth/twitter/config.php', dest: '<%= yeoman.dev %>/oauth/twitter/config.php'}
-=======
-          {src: '<%= yeoman.dev %>/js/app.js', dest: '<%= yeoman.dev %>/js/app.js'}
->>>>>>> 59d79a575ea330439be1cbce8470c4c45d256e67
         ]
       },
       build: {
         options: {
           variables: {
             app: 'js/app.js',
-<<<<<<< HEAD
             ember: 'js/libs/ember/ember.js',
             ember_data: 'js/libs/ember-data/ember-data.js',
             ember_simple_auth: 'js/libs/ember-simple-auth/ember-simple-auth.js',
@@ -226,26 +217,12 @@ module.exports = function (grunt) {
             templates: 'js/templates/templates.js',
             frontend: 'http://api.peopleandcode.com',
             server_endpoint: 'http://opengov.webnotwar.ca'
-=======
-            ember: 'js/libs/ember/ember.min.js',
-            ember_data: 'js/libs/ember-data/ember-data.min.js',
-            ember_simple_auth: 'js/libs/ember-simple-auth/ember-simple-auth.js',
-            moment: 'js/libs/momentjs/moment.js',
-            handlebars: 'js/libs/handlebars/handlebars.runtime.min.js',
-            jquery: 'js/libs/jquery/jquery.min.js',
-            templates: 'js/templates/templates.js',
-            store: 'https://api.peopleandcode.com'
->>>>>>> 59d79a575ea330439be1cbce8470c4c45d256e67
           }
         },
         files: [
           {src: '<%= yeoman.dev %>/index.html', dest: '<%= yeoman.dev %>/index.html'},
-<<<<<<< HEAD
           {src: '<%= yeoman.dev %>/js/app.js', dest: '<%= yeoman.dev %>/js/app.js'},
           {src: '<%= yeoman.dev %>/oauth/twitter/config.php', dest: '<%= yeoman.dev %>/oauth/twitter/config.php'}
-=======
-          {src: '<%= yeoman.dev %>/js/app.js', dest: '<%= yeoman.dev %>/js/app.js'}
->>>>>>> 59d79a575ea330439be1cbce8470c4c45d256e67
         ]
       },
       dev: {
@@ -277,7 +254,6 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.dev %>/js/libs/'
         }]
       },
-<<<<<<< HEAD
       oauth: {
         files: [{
           expand: true,
@@ -288,24 +264,15 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.dev %>/oauth/'
         }]
       },
-=======
->>>>>>> 59d79a575ea330439be1cbce8470c4c45d256e67
       build: {
         files: [{
           expand: true,
           cwd: '<%= yeoman.src %>/bower_components/',
           src: [
-<<<<<<< HEAD
             'ember/ember.js', 
             'ember-data/ember-data.js', 
             'jquery/jquery.js', 
             'handlebars/handlebars.runtime.js',
-=======
-            'ember/ember.min.js', 
-            'ember-data/ember-data.min.js', 
-            'jquery/jquery.min.js', 
-            'handlebars/handlebars.runtime.min.js',
->>>>>>> 59d79a575ea330439be1cbce8470c4c45d256e67
             'momentjs/moment.js',
             'ember-simple-auth/ember-simple-auth.js'
           ],
@@ -430,12 +397,8 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:server',
     'haml:src',
-<<<<<<< HEAD
     'copy:src',
     'copy:oauth',
-=======
-    'copy:build',
->>>>>>> 59d79a575ea330439be1cbce8470c4c45d256e67
     'compass:src',
     'concurrent:server',
     'neuter:src',
