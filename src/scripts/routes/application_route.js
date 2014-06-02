@@ -7,6 +7,12 @@ Opengov.ApplicationRoute = Ember.Route.extend(Ember.SimpleAuth.ApplicationRouteM
       session = this.controllerFor('login').get('session');
       this.transitionTo(session.attemptedTransition);
     },
+    authenticateWithTwitter: function() {
+      this.get('session').authenticate('authenticator:twitter', {});
+    },
+    authenticateWithFacebook: function() {
+      this.get('session').authenticate('authenticator:facebook', {});
+    },
     notificationRead: function(notification){
       var self, store, data, url;
 

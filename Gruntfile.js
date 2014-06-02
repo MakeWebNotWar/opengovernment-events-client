@@ -42,7 +42,7 @@ module.exports = function (grunt) {
       },
       neuter: {
         files: ['<%= yeoman.src %>/scripts/**/*.js'],
-        tasks: ['neuter:src']
+        tasks: ['neuter:src', 'copy:build']
       },
       livereload: {
         options: {
@@ -193,11 +193,36 @@ module.exports = function (grunt) {
             moment: 'js/libs/momentjs/moment.js',
             handlebars: 'js/libs/handlebars/handlebars.runtime.js',
             jquery: 'js/libs/jquery/jquery.js',
-            templates: 'js/templates/templates.js'
+            templates: 'js/templates/templates.js',
+            frontend: 'http://127.0.0.1/dev',
+            server_endpoint: 'http://localhost:3000'
           }
         },
         files: [
-          {src: '<%= yeoman.dev %>/index.html', dest: '<%= yeoman.dev %>/index.html'}
+          {src: '<%= yeoman.dev %>/index.html', dest: '<%= yeoman.dev %>/index.html'},
+          {src: '<%= yeoman.dev %>/js/app.js', dest: '<%= yeoman.dev %>/js/app.js'},
+          {src: '<%= yeoman.dev %>/oauth/twitter/config.php', dest: '<%= yeoman.dev %>/oauth/twitter/config.php'}
+        ]
+      },
+      build: {
+        options: {
+          variables: {
+            app: 'js/app.js',
+            ember: 'js/libs/ember/ember.js',
+            ember_data: 'js/libs/ember-data/ember-data.js',
+            ember_simple_auth: 'js/libs/ember-simple-auth/ember-simple-auth.js',
+            moment: 'js/libs/momentjs/moment.js',
+            handlebars: 'js/libs/handlebars/handlebars.runtime.js',
+            jquery: 'js/libs/jquery/jquery.js',
+            templates: 'js/templates/templates.js',
+            frontend: 'http://api.peopleandcode.com',
+            server_endpoint: 'http://opengov.webnotwar.ca'
+          }
+        },
+        files: [
+          {src: '<%= yeoman.dev %>/index.html', dest: '<%= yeoman.dev %>/index.html'},
+          {src: '<%= yeoman.dev %>/js/app.js', dest: '<%= yeoman.dev %>/js/app.js'},
+          {src: '<%= yeoman.dev %>/oauth/twitter/config.php', dest: '<%= yeoman.dev %>/oauth/twitter/config.php'}
         ]
       },
       dev: {
@@ -215,6 +240,31 @@ module.exports = function (grunt) {
     // Put files not handled in other tasks here
     copy: {
       src: {
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.src %>/bower_components/',
+          src: [
+            'ember/ember.js', 
+            'ember-data/ember-data.js', 
+            'jquery/jquery.js', 
+            'handlebars/handlebars.runtime.js',
+            'momentjs/moment.js',
+            'ember-simple-auth/ember-simple-auth.js'
+          ],
+          dest: '<%= yeoman.dev %>/js/libs/'
+        }]
+      },
+      oauth: {
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.src %>/oauth/',
+          src: [
+            'twitter/{,*/}*.*'
+          ],
+          dest: '<%= yeoman.dev %>/oauth/'
+        }]
+      },
+      build: {
         files: [{
           expand: true,
           cwd: '<%= yeoman.src %>/bower_components/',
@@ -325,10 +375,11 @@ module.exports = function (grunt) {
       'clean:server',
       'haml:src',
       'copy:src',
+      'copy:oauth',
       'compass:src',
-      'replace:src',
       'concurrent:server',
       'neuter:src',
+      'replace:src',
       'connect:livereload',
       'watch'
     ]);
@@ -347,10 +398,11 @@ module.exports = function (grunt) {
     'clean:server',
     'haml:src',
     'copy:src',
+    'copy:oauth',
     'compass:src',
-    'replace:src',
     'concurrent:server',
-    'neuter:src'
+    'neuter:src',
+    'replace:build',
   ]);
 
   grunt.registerTask('default', [
