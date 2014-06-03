@@ -1,0 +1,13 @@
+#user-info
+  p {{session.profileMessage}}
+  #bio
+    .circle-image
+      ' {{gravatar-image session.user_gravatarID}}
+  #details
+    p {{firstname}}
+    form action="updateProfile"
+      input valueBinding="firstname" placeholder="First Name"
+      input valueBinding="lastname" placeholder="Last Name"
+      input valueBinding="email" placeholder="Email"
+      input valueBinding="password" placeholder="Password"
+      input valueBinding="password_confirmation" placeholder="Confirm Password"

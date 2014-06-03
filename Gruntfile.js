@@ -42,7 +42,7 @@ module.exports = function (grunt) {
       },
       neuter: {
         files: ['<%= yeoman.src %>/scripts/**/*.js'],
-        tasks: ['neuter:src', 'copy:build']
+        tasks: ['neuter:src', 'copy:build', 'replace:src']
       },
       livereload: {
         options: {
@@ -194,7 +194,7 @@ module.exports = function (grunt) {
             handlebars: 'js/libs/handlebars/handlebars.runtime.js',
             jquery: 'js/libs/jquery/jquery.js',
             templates: 'js/templates/templates.js',
-            frontend: 'http://127.0.0.1/dev',
+            frontend: 'http://test.peopleandcode.com',
             server_endpoint: 'http://localhost:3000'
           }
         },
