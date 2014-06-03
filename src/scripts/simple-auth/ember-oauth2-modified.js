@@ -193,6 +193,7 @@
         token.scope = this.get('scope');
         token.access_token = params.access_token;
         token.token_secret = params.token_secret;
+        token.signup = params.signup;
         return token;     
       },
 
@@ -382,6 +383,12 @@
         var token = this.getToken();
         if(!token) return null;
         return token.token_secret;
+      },
+
+      getSignup: function() {
+        var token = this.getToken();
+        if(!token) return null;
+        return token.signup;
       },
 
       /**

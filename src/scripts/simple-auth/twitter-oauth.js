@@ -12,14 +12,14 @@ Ember.OAuth2.config = {
 Opengov.TwitterOauth = Ember.OAuth2.create({providerId: 'twitter'});
 
 Opengov.TwitterAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
-  serverTokenEndpoint: function(){
+  serverEndpoint: function(){
     var _this, store, host, namespace, url;
 
     _this = this;
     store = Opengov.ApplicationAdapter.create();
     host = store.get('host');
     namespace = store.get('namespace');
-    url = [host, namespace, "authentication"].join('/')
+    url = [host, namespace].join('/')
     return url;
   },
   restore: function(data) {
@@ -39,16 +39,21 @@ Opengov.TwitterAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
         // Setup the callback to resolve this function
         token = this.getAccessToken();
         token_secret = this.getTokenSecret();
-        
-        data = {
-          authentication: {
-            "provider_auth_token": token,
-            "provider_name": "twitter",
-            "provider_token_secret": token_secret
-          }
+        signup = this.getSignup();
+        console.log("signup: " + signup);
+      
+        headers = {
+          "X-Provider-Auth-Token": token,
+          "X-Provider-Token-Secret": token_secret,
+          "X-Provider-Name": "twitter"
         };
-        console.log(data);
-        _this.makeRequest(data).then(
+        
+        if(signup === "true") {
+          headers["X-Signup"] = true
+        }
+        
+        console.log(headers);
+        _this.makeRequest(headers).then(
           function(response) {
             console.log(response);
             Ember.run(function() {
@@ -73,14 +78,24 @@ Opengov.TwitterAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
       resolve();
     });
   },
-  makeRequest: function(data, resolve, reject) {
+  makeRequest: function(headers, resolve, reject) {
     if (!Ember.SimpleAuth.Utils.isSecureUrl(this.serverTokenEndpoint)) {
       Ember.Logger.warn('Credentials are transmitted via an insecure connection - use HTTPS to keep them secure.');
     }
+    
+    url = this.serverEndpoint();
+
+    if(headers["X-Signup"]){
+      url = url + "/signup"
+    }
+    else {
+      url = url + "/authentication"
+    }
+
     return Ember.$.ajax({
-      url:         this.serverTokenEndpoint(),
+      url:         url,
       type:        'POST',
-      data:        data,
+      headers:     headers,
       dataType:    'json',
       contentType: 'application/x-www-form-urlencoded'
     });

@@ -11,3 +11,5 @@
     = input valueBinding="password" placeholder="Password" type="password"
     = input valueBinding="password_confirmation" placeholder="Confirm Password" type="password"
     button class="button success" Signup
+  .or
+    button class="button" click="signupWithTwitter" Sign up with Twitter
