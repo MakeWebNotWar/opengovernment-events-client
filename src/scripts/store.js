@@ -1,7 +1,7 @@
 Opengov.ApplicationAdapter = DS.RESTAdapter;
 
 Opengov.ApplicationAdapter.reopen({
-  host: "@@server_endpoint",
+  host: "http://localhost:3000",
   namespace: "api/v1",
   headers: function(){
     

@@ -5,6 +5,6 @@
  * A single location to store configuration.
  */
 
-define('CONSUMER_KEY', $_ENV["Twitter_API_Key"]);
-define('CONSUMER_SECRET', $_ENV["Twitter_API_Secret"]);
-define('OAUTH_CALLBACK', '@@frontend/oauth/twitter/callback.php');
+define('CONSUMER_KEY', '6c5eThuY5SS3QLItjbKCG2ifZ');
+define('CONSUMER_SECRET', 'UCmgW3mWknA4FAXcybLnBiLIeWOtzn16WViPi4YX0JrmI1FCuN');
+define('OAUTH_CALLBACK', 'http://127.0.0.1/dev/oauth/twitter/callback.php');

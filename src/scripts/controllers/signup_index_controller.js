@@ -33,6 +33,10 @@ Opengov.SignupIndexController = Ember.Controller.extend({
       }).success(function(response){
         self.transitionToRoute('signup.success');
       });
+    },
+    signupWithTwitter: function(){
+      var self, attributes, data, store, url;
+      this.get('session').authenticate('authenticator:twitter', {});
     }
   }
 });

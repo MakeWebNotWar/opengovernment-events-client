@@ -4,7 +4,7 @@ Opengov.ApplicationRoute = Ember.Route.extend(Ember.SimpleAuth.ApplicationRouteM
       this.controllerFor('login').set('errorMessage', error.message);
     },
     sessionInvalidationSucceeded: function(){
-      session = this.controllerFor('login').get('session');
+      session = this.get('session');
       this.transitionTo(session.attemptedTransition);
     },
     authenticateWithTwitter: function() {

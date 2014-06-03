@@ -23,11 +23,11 @@ Opengov.CustomAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
       //     user_password: credentials.password 
       //   }
       // };
-      var data = {
+      var headers = {
         "X-User-Email": credentials.identification,
         "X-User-Password": credentials.password
       };
-      _this.makeRequest(data).then(
+      _this.makeRequest(headers).then(
         function(response) {
           Ember.run(function() {
             resolve(response);
@@ -56,15 +56,14 @@ Opengov.CustomAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
     return Ember.RSVP.resolve();
   },
 
-  makeRequest: function(data, resolve, reject) {
+  makeRequest: function(headers, resolve, reject) {
     if (!Ember.SimpleAuth.Utils.isSecureUrl(this.serverTokenEndpoint)) {
       Ember.Logger.warn('Credentials are transmitted via an insecure connection - use HTTPS to keep them secure.');
     }
     return Ember.$.ajax({
       url:         this.serverTokenEndpoint(),
       type:        'POST',
-      // data:        data,
-      headers:     data,
+      headers:     headers,
       dataType:    'json',
       contentType: 'application/x-www-form-urlencoded'
     });
