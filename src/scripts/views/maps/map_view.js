@@ -1,20 +1,23 @@
 Opengov.MapView = Ember.View.extend({
   didInsertElement: function(){
-    var self;
+    var self, controller, map;
 
     self = this;
+    controller = self.get('controller');
+    map = controller.get('map');
 
     $(window).bind('resize.mapview', function(){
         self.resizeElement();
     }).trigger('resize.mapview');
 
-    self.get('controller').mapInit();
-    self.get('controller').map;
-    self.get('controller').addPins();
+    controller.mapInit().then(function(map){
+      controller.addPins();  
+    });
+    
 
-    setTimeout(function(){
-      self.get('controller').send('setBoundingBox');
-    }, 1000);
+    // setTimeout(function(){
+    //   self.get('controller').send('setBoundingBox');
+    // }, 1000);
 
 
   },
