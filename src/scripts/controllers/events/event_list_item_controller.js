@@ -1,3 +1,1 @@
-Opengov.EventsListItemController = Ember.ObjectController.extend({
-
-});
+Opengov.EventsListItemController = Ember.ObjectController.extend({});

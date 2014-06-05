@@ -8,10 +8,10 @@ Opengov.EventsListItemView = Ember.View.extend({
     elementId = self.get('elementId');
     itemController = self.get('controller.content');
     indexController = self.get('controller.parentController');
+    pin = itemController.get('pin');
     currentSelectedItem = indexController.get('currentSelectedItem');
     selected = currentSelectedItem === itemController.id ? true : false;
     map = indexController.map;
-
 
     $('.item').removeClass('selected');
     self.$().find('.item').addClass('selected');
@@ -21,10 +21,7 @@ Opengov.EventsListItemView = Ember.View.extend({
     } else {
       self.clickCount++;
       indexController.set('currentSelectedItem', itemController.id);
-      map.setView({
-        center: itemController.pin.getLocation(),
-        zoom: 13
-      });
+      map.setCenter(pin.getPosition());
     }
     
   },
