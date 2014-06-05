@@ -84,6 +84,34 @@ Opengov.MapMixin = Ember.Mixin.create({
 
     return pin;
   },
+  setBoundingBox: function(){
+    var self, map, bounds;
+    console.log('fired');
+    self = this;
+    map = self.get('map');
+    bounds = new google.maps.LatLngBounds();
+    console.log("fire1: " + bounds);
+
+    self.get('content').sortBy('start_date').forEach(function(e, index){
+      console.log(e.get('pin'));
+      e.get('pin').then(function(pin){
+        if(pin){
+          bounds.extend(pin.getPosition());
+          console.log(bounds);
+        }
+        else {
+          console.log('no pin');
+        }
+      });
+    });
+
+    if(map){
+      console.log('map exisits');
+    }
+    map.setCenter(bounds.getCenter())
+    map.fitBounds(bounds);
+    console.log("fire3: " + bounds);
+  },
 
   getUserLocation: function(callback){
     return $.getJSON("http://freegeoip.net/json/").then(
@@ -93,21 +121,7 @@ Opengov.MapMixin = Ember.Mixin.create({
     );
   },
   actions: {
-    setBoundingBox: function(){
-      var self, location, locations, boundingBox, map, collection;
-      
-      self = this;
-      locations = self.locations;
-      map = self.map;
-  
-      boundingBox = Microsoft.Maps.LocationRect.fromLocations(locations);
-
-      map.setView({
-        bounds: boundingBox,
-        animate:false
-      });
-      self.set('map', map);
-    },
+    
     centerToUser: function(){
       var self;
       self = this;
