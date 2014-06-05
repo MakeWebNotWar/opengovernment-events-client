@@ -9,7 +9,6 @@ Opengov.MapView = Ember.View.extend({
     }).trigger('resize.mapview');
 
     self.get('controller').mapInit();
-    self.get('controller').map;
     self.get('controller').addPins();
 
     setTimeout(function(){
