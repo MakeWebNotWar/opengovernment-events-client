@@ -4,45 +4,114 @@ Opengov.MapMixin = Ember.Mixin.create({
     
     self = this;
 
-    self.getUserLocation().then(
-      function(coordinates){
-        var center, styles, mapOptions, map;
+    return new Promise(function(resolve, reject){
+      self.getUserLocation().then(
+        function(coordinates){
+          var center, styles, mapOptions, map;
 
-        center = new google.maps.LatLng(coordinates.latitude, coordinates.longitude);
-        
-        styles = [
-          {
-            featureType: "road",
-            elementType: "geometry",
-            stylers: [
-              { lightness: 100 },
-              { visibility: "simplified" }
-            ]
-          },
-          {
-            featureType: "poi",
-            stylers: [
-              { visibility: "off" }
-            ]   
-          }
-        ];
+          center = new google.maps.LatLng(coordinates.latitude, coordinates.longitude);
+          
+          styles = [
+            {
+              featureType: "road",
+              elementType: "geometry",
+              stylers: [
+                { lightness: 100 },
+                { visibility: "simplified" }
+              ]
+            },
+            {
+              featureType: "poi",
+              stylers: [
+                { visibility: "off" }
+              ]   
+            }
+          ];
 
-        mapOptions = {
-          zoom: 12,
-          center: center,
-          styles: styles
-        };
+          mapOptions = {
+            zoom: 12,
+            center: center,
+            styles: styles
+          };
 
-        map = new google.maps.Map(document.getElementById('map'), mapOptions);
-        self.set('map', map);
+          map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-      }
-    );
+          self.set('map', map);
+          window.Map = map;
+
+          resolve(map);
+        },
+        function(){
+          reject();
+        }
+      );
+    });
   },
 
-  // pushPinLayer: new Microsoft.Maps.EntityCollection(),
-
   locations: [],
+
+  addPins: function(){
+    var self, map;
+    
+    self = this;
+    map = self.get('map');
+    
+    self.get('content').sortBy('start_date').forEach(function(e, index){
+      e.get('location').then(function(location){
+        if(location){
+          pin = self.addPin(location);
+          pin.setMap(map);
+          e.set('pin', pin);
+        }
+      });
+    });    
+  },
+  addPin: function(location){ 
+    var self, coordinates, latLng, pin;
+
+    self = this;
+    coordinates = location.get('coordinates');
+    latLng = new google.maps.LatLng(coordinates[0], coordinates[1]);
+
+    pin = new google.maps.Marker({
+      position: latLng,
+      animation: google.maps.Animation.DROP
+    });
+
+    google.maps.event.addListener(pin, 'click', function() { 
+      self.get('controller').transitionToRoute('event', self.get('id'));
+    }); 
+
+    return pin;
+  },
+  setBoundingBox: function(){
+    var self, map, bounds;
+    console.log('fired');
+    self = this;
+    map = self.get('map');
+    bounds = new google.maps.LatLngBounds();
+    console.log("fire1: " + bounds);
+
+    self.get('content').sortBy('start_date').forEach(function(e, index){
+      console.log(e.get('pin'));
+      e.get('pin').then(function(pin){
+        if(pin){
+          bounds.extend(pin.getPosition());
+          console.log(bounds);
+        }
+        else {
+          console.log('no pin');
+        }
+      });
+    });
+
+    if(map){
+      console.log('map exisits');
+    }
+    map.setCenter(bounds.getCenter())
+    map.fitBounds(bounds);
+    console.log("fire3: " + bounds);
+  },
 
   getUserLocation: function(callback){
     return $.getJSON("http://freegeoip.net/json/").then(
@@ -52,21 +121,6 @@ Opengov.MapMixin = Ember.Mixin.create({
     );
   },
   actions: {
-    setBoundingBox: function(){
-      var self, location, locations, boundingBox, map, collection;
-      
-      self = this;
-      locations = self.locations;
-      map = self.map;
-  
-      boundingBox = Microsoft.Maps.LocationRect.fromLocations(locations);
-
-      map.setView({
-        bounds: boundingBox,
-        animate:false
-      });
-      self.set('map', map);
-    },
     
     centerToUser: function(){
       var self;
@@ -75,17 +129,6 @@ Opengov.MapMixin = Ember.Mixin.create({
         self.getUserGeoLocation,
         self.getUserIpLocation
       );
-    },
-
-    getUserIpLocation: function(position){
-      var self;
-      self = this;
-
-      $.getJSON("http://freegeoip.net/json/").then(function(coordinates){
-
-        self.makeUserPushPin(coordinates);
-        // self.setUserGeoLocation(coordinates);
-      });
     },
     getUserGeoLocation: function(position){
       var self, coordinates;
@@ -105,32 +148,7 @@ Opengov.MapMixin = Ember.Mixin.create({
       coordinates = JSON.stringify({latitude: lat, longitude: lng});
 
       localStorage.coordinates = coordinates;
-    },
-    makeUserPushPin: function(coordinates){
-      var self, lat, lng, loc, text, pin;
-
-      self = this;
-      lat = coordinates.latitude;
-      lng = coordinates.longitude;
-      loc = new Microsoft.Maps.Location(lat, lng);
-      text = "You";
-      pin = new Microsoft.Maps.Pushpin(loc, {text: text});
-
-      self.map.entities.push(pin);
-      this.centerMapToCoordinates(coordinates);
-    },
-    centerMapToCoordinates: function(coordinates){
-      var self, lat, lng;
-
-      self = this;
-      lat = coordinates.latitude;
-      lng = coordinates.longitude;
-
-      self.map.setView({
-        center: new Microsoft.Maps.Location(lat, lng),
-        zoom: 10
-      });
-    },
+    }
   }
 
 });
