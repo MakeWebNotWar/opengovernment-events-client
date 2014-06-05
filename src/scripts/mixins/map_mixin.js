@@ -1,57 +1,55 @@
 Opengov.MapMixin = Ember.Mixin.create({
   mapInit: function(){
-    var self, center, map;
-
+    var self;
+    
     self = this;
 
-    center = new Microsoft.Maps.Location(43.7000, -79.4000);
-    
-    map = new Microsoft.Maps.Map(document.getElementById("map"), {
-      credentials:"AtXaY5ngrjFXFtDzCQ634BPmhEpiqkz-jm1mox73DLiRD9IW1jUq7iO4iKvCGfvF",
-      mapTypeId: Microsoft.Maps.MapTypeId.road,
-      zoom: 5,
-      center: center,
-      showLogo: false,
-      showMapTypeSelector: false,
-      showScalebar: false,
-    });
+    self.getUserLocation().then(
+      function(coordinates){
+        var center, styles, mapOptions, map;
 
-    this.set('map', map);
+        center = new google.maps.LatLng(coordinates.latitude, coordinates.longitude);
+        
+        styles = [
+          {
+            featureType: "road",
+            elementType: "geometry",
+            stylers: [
+              { lightness: 100 },
+              { visibility: "simplified" }
+            ]
+          },
+          {
+            featureType: "poi",
+            stylers: [
+              { visibility: "off" }
+            ]   
+          }
+        ];
+
+        mapOptions = {
+          zoom: 12,
+          center: center,
+          styles: styles
+        };
+
+        map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        self.set('map', map);
+
+      }
+    );
   },
 
   // pushPinLayer: new Microsoft.Maps.EntityCollection(),
 
   locations: [],
 
-  addPushPins: function(){
-    var self, map, pin;
-
-    self = this;
-    map = self.map;
-
-    self.get('content').sortBy('start_date').forEach(function(ev, index){
-      ev.get('location').then(function(location){
-        if(location){
-          coordinates = location.get('coordinates');
-          lat = coordinates[0],
-          lng = coordinates[1],
-          loc = new Microsoft.Maps.Location(lat, lng),
-          text = (index + 1).toString(),
-          pin = new Microsoft.Maps.Pushpin(loc, {text: text});
-          // self.pushPinLayer.push(pin);
-          map.entities.push(pin);
-          self.locations.push(loc);
-
-          Microsoft.Maps.Events.addHandler(pin, 'click', function(){
-           self.transitionToRoute('event', ev.id);
-          });
-          ev.set('pin', pin);
-        }
-        
-      });
-    });
-    // map.entities.push(self.pushPinLayer);
-    // return self.pushPinLayer;
+  getUserLocation: function(callback){
+    return $.getJSON("http://freegeoip.net/json/").then(
+      function(response){
+        return response;
+      }
+    );
   },
   actions: {
     setBoundingBox: function(){
