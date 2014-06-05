@@ -5,7 +5,8 @@ Ember.Application.initializer({
     container.register('authorizer:custom', Opengov.CustomAuthorizer);
 
     Ember.SimpleAuth.setup(container, application, {
-      authorizerFactory: 'authorizer:custom'
+      authorizerFactory: 'authorizer:custom',
+      crossOriginWhitelist: ['http://localhost:3000']
     });
   }
 });

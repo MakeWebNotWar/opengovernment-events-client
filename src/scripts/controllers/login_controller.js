@@ -3,7 +3,8 @@ Opengov.LoginController = Ember.Controller.extend(Ember.SimpleAuth.LoginControll
   reset: function(){
     this.setProperties({
       identification: "",
-      password: ""
+      password: "",
+      errorMessage: null
     });
   }
 });
