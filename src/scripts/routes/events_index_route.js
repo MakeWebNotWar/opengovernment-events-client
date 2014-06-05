@@ -1,5 +1,5 @@
 Opengov.EventsIndexRoute = Ember.Route.extend({
   model: function(params){
-    return this.get('store').findAll('event');
+    return this.get('store').find('event');
   }
 });
