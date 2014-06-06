@@ -4,7 +4,7 @@ Opengov.MapMixin = Ember.Mixin.create({
     
     self = this;
 
-    return new Promise(function(resolve, reject){
+    return new Ember.RSVP.Promise(function(resolve, reject){
       self.getUserLocation().then(
         function(coordinates){
           var center, styles, mapOptions, map;
@@ -35,9 +35,10 @@ Opengov.MapMixin = Ember.Mixin.create({
           };
 
           map = new google.maps.Map(document.getElementById('map'), mapOptions);
+          bounds = new google.maps.LatLngBounds();
 
+          self.set('mapBounds', bounds);
           self.set('map', map);
-          window.Map = map;
 
           resolve(map);
         },
@@ -51,20 +52,35 @@ Opengov.MapMixin = Ember.Mixin.create({
   locations: [],
 
   addPins: function(){
-    var self, map;
+    var self, map, pins, content, length, bounds;
     
     self = this;
     map = self.get('map');
-    
-    self.get('content').sortBy('start_date').forEach(function(e, index){
-      e.get('location').then(function(location){
-        if(location){
+    pins = [];
+    content = self.get('content');
+    length = content.get('content.length');
+    bounds = self.get('mapBounds');
+
+    return new Promise(function(resolve, reject){
+      content.sortBy('start_date').forEach(function(e, index){
+        e.get('location').then(function(location){
           pin = self.addPin(location);
           pin.setMap(map);
+
+          google.maps.event.addListener(pin, 'click', function() { 
+            self.transitionToRoute('event', e.get('id'));
+          });
+
           e.set('pin', pin);
-        }
+          bounds.extend(pin.getPosition());
+          pins.push(pin);
+          length--;
+          if(length === 0){
+            resolve(pins);
+          }
+        });
       });
-    });    
+    });
   },
   addPin: function(location){ 
     var self, coordinates, latLng, pin;
@@ -72,45 +88,25 @@ Opengov.MapMixin = Ember.Mixin.create({
     self = this;
     coordinates = location.get('coordinates');
     latLng = new google.maps.LatLng(coordinates[0], coordinates[1]);
-
     pin = new google.maps.Marker({
       position: latLng,
       animation: google.maps.Animation.DROP
     });
 
-    google.maps.event.addListener(pin, 'click', function() { 
-      self.get('controller').transitionToRoute('event', self.get('id'));
-    }); 
+    window.ray = self;
 
     return pin;
   },
-  setBoundingBox: function(){
+  setBoundingBox: function(pins){
     var self, map, bounds;
-    console.log('fired');
+    
     self = this;
+    content = self.get('content');
     map = self.get('map');
-    bounds = new google.maps.LatLngBounds();
-    console.log("fire1: " + bounds);
+    bounds = self.get('mapBounds');
 
-    self.get('content').sortBy('start_date').forEach(function(e, index){
-      console.log(e.get('pin'));
-      e.get('pin').then(function(pin){
-        if(pin){
-          bounds.extend(pin.getPosition());
-          console.log(bounds);
-        }
-        else {
-          console.log('no pin');
-        }
-      });
-    });
-
-    if(map){
-      console.log('map exisits');
-    }
-    map.setCenter(bounds.getCenter())
+    map.setCenter(bounds.getCenter());
     map.fitBounds(bounds);
-    console.log("fire3: " + bounds);
   },
 
   getUserLocation: function(callback){
