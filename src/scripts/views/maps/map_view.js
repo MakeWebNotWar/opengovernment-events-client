@@ -11,10 +11,13 @@ Opengov.MapView = Ember.View.extend({
     }).trigger('resize.mapview');
 
 
-    controller.mapInit().then(function(map){
-      controller.addPins();
-      controller.setBoundingBox();
-    });
+    controller.mapInit()
+      .then(function(m){
+        return(controller.addPins())
+      })
+      .then(function(){
+        controller.setBoundingBox();
+      });
   },
   willDestroyElement: function(){
     $(window).unbind('resize.mapview');
