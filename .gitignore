@@ -6,4 +6,4 @@ dist
 dev
 src/bower_components
 Gemfile.lock
-**/config.php
+src/oauth/twitter/config.php
