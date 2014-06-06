@@ -1,6 +1,6 @@
 Opengov.ApplicationAdapter = DS.RESTAdapter;
 
 Opengov.ApplicationAdapter.reopen({
-  host: "https://api.peopleandcode.com",
+  host: "@@server_endpoint",
   namespace: "api/v1"
 });

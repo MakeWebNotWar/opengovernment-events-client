@@ -60,9 +60,10 @@ Opengov.TwitterAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
               resolve(response);
             });
           }, 
-          function(xhr, status, error) {
+          function(response) {
             Ember.run(function() {
-              reject(xhr.responseJSON || xhr.responseText);
+              console.log(response);
+              reject(response);
             });
           }
         );
