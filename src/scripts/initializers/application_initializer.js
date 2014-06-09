@@ -6,7 +6,7 @@ Ember.Application.initializer({
 
     Ember.SimpleAuth.setup(container, application, {
       authorizerFactory: 'authorizer:custom',
-      crossOriginWhitelist: ['http://localhost:3000']
+      crossOriginWhitelist: ['http://localhost:3000', 'https://api.peopleandcode.com']
     });
   }
 });
