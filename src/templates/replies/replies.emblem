@@ -1,0 +1,2 @@
+each reply in controller
+  = render 'reply' reply

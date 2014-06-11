@@ -1,1 +1,3 @@
-Opengov.ReplyController = Ember.ObjectController.extend({});
+Opengov.ReplyController = Ember.ObjectController.extend({
+  needs: ['user']
+});

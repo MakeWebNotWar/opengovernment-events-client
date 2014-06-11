@@ -1,5 +1,7 @@
 .navigation
   h2 Events
+  button click='setBoundingBox' title="All events happening soon" All Events
+  = link-to 'events.new' classNames='add-event' title="Add an event"| Create Event
 ul class="items"
   each event in controller
     Opengov.EventsListItemView

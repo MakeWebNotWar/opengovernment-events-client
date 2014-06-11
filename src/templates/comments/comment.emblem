@@ -10,3 +10,6 @@ p
 if comment.isOwner
   .actions
     a click="destroyComment comment" Delete
+
+if comment.replies
+  = render 'replies' comment.replies

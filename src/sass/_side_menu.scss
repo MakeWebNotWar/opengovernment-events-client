@@ -19,8 +19,8 @@ $divide_border: $peach;
     width: 100%;
     overflow: hidden;
     button {
-      width: 132px;
-      font-size: 0.8em;
+      width: 50%;
+      font-size: 1em;
       background-color: $purple;
       &:hover {
         background-color: $dark_purple;
@@ -31,12 +31,11 @@ $divide_border: $peach;
     }
     a {
       display: inline-block;
-      width: 20%;
+      width: 50%;
       margin: 0px;
-      padding: 20px 30px;
+      padding: 20px 0px;
       text-align: center;
       font-size: 1em;
-      line-height: 1em;
       border: solid 1px $dark_purple;
       &.previous {
         float: left;

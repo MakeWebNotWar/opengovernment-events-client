@@ -1,0 +1,19 @@
+.replies {
+  display: block;
+  clear: both;
+  margin: 20px 0 !important;
+}
+
+.reply {
+  display: block;
+  clear: both;
+  width: 80%;
+  float: right;
+  padding: 20px 0;
+  margin: 0px;
+  border-bottom: 1px solid #ccc;
+  .circle-image {
+    float: right;
+    margin: 0px;
+  }
+}

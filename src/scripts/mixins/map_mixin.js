@@ -104,7 +104,7 @@ Opengov.MapMixin = Ember.Mixin.create({
 
     return pin;
   },
-  setBoundingBox: function(pins){
+  setBoundingBox: function(){
     var self, map, bounds;
     
     self = this;
@@ -131,6 +131,9 @@ Opengov.MapMixin = Ember.Mixin.create({
     );
   },
   actions: {
+    setBoundingBox: function(){
+      this.setBoundingBox();
+    },
     
     centerToUser: function(){
       var self;

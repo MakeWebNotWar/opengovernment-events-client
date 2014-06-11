@@ -19,11 +19,6 @@
       padding: 30px 10px;
       border-bottom: 1px solid $cream;
       overflow: hidden;
-      .circle-image {
-        width: 100px;
-        margin-right: 20px;
-        float: left;
-      }
     }
     &.actions {
       float: right;
@@ -45,5 +40,13 @@
     &:hover {
       text-decoration: underline;
     }
+  }
+}
+
+.comment {
+  .circle-image {
+    width: 100px;
+    margin-right: 20px;
+    float: left;
   }
 }

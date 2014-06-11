@@ -1,0 +1,15 @@
+.circle-image
+  '{{gravatar-image reply.user.gravatarID}}
+h5
+  '{{reply.user.firstname}} {{reply.user.lastname}}
+  small
+    '// {{format-date reply.updated_at}}
+p
+  reply.text
+
+if reply.isOwner
+  .actions
+    a click="destroyComment comment" Delete
+
+if reply.replies
+  = render 'replies' reply.replies
