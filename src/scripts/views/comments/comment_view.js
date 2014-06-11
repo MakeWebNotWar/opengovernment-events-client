@@ -11,14 +11,11 @@ Opengov.CommentView = Ember.View.extend({
 
     commentUser.then(
       function(user){
-        sessionUser = controller.get('controllers.login').get('session.user_id');
+        sessionUser = controller.get('session.user_id');
         result =  user.id === sessionUser;
         self._parentView.content.set('isOwner', result);
       }
-    );
-
-    console.log('inserted');
-    
+    ); 
   },
 
 });

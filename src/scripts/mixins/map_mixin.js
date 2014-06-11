@@ -4,46 +4,53 @@ Opengov.MapMixin = Ember.Mixin.create({
     
     self = this;
 
+    function buildMap(coordinates){
+      var center, styles, mapOptions, map;
+
+      center = new google.maps.LatLng(coordinates.latitude, coordinates.longitude);
+      
+      styles = [
+        {
+          featureType: "road",
+          elementType: "geometry",
+          stylers: [
+            { lightness: 100 },
+            { visibility: "simplified" }
+          ]
+        },
+        {
+          featureType: "poi",
+          stylers: [
+            { visibility: "off" }
+          ]   
+        }
+      ];
+
+      mapOptions = {
+        zoom: 12,
+        center: center,
+        styles: styles
+      };
+
+      map = new google.maps.Map(document.getElementById('map'), mapOptions);
+      bounds = new google.maps.LatLngBounds();
+
+      self.set('mapBounds', bounds);
+      self.set('map', map);
+
+      return map;
+        
+    }
+
     return new Ember.RSVP.Promise(function(resolve, reject){
       self.getUserLocation().then(
         function(coordinates){
-          var center, styles, mapOptions, map;
-
-          center = new google.maps.LatLng(coordinates.latitude, coordinates.longitude);
-          
-          styles = [
-            {
-              featureType: "road",
-              elementType: "geometry",
-              stylers: [
-                { lightness: 100 },
-                { visibility: "simplified" }
-              ]
-            },
-            {
-              featureType: "poi",
-              stylers: [
-                { visibility: "off" }
-              ]   
-            }
-          ];
-
-          mapOptions = {
-            zoom: 12,
-            center: center,
-            styles: styles
-          };
-
-          map = new google.maps.Map(document.getElementById('map'), mapOptions);
-          bounds = new google.maps.LatLngBounds();
-
-          self.set('mapBounds', bounds);
-          self.set('map', map);
-
+          map = buildMap(coordinates);
           resolve(map);
         },
-        function(){
-          reject();
+        function(coordinates){
+          map = buildMap(coordinates);
+          resolve(map);
         }
       );
     });
@@ -113,6 +120,13 @@ Opengov.MapMixin = Ember.Mixin.create({
     return $.getJSON("http://freegeoip.net/json/").then(
       function(response){
         return response;
+      },
+      function(){
+        coordinates = {
+          latitude: 43.7000,
+          longitude: -79.4000
+        };
+        return coordinates;
       }
     );
   },

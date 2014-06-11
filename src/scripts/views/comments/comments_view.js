@@ -1,3 +1,4 @@
 Opengov.CommentsView = Ember.View.extend({
-  templateName: 'comments/comments'
+  templateName: 'comments/comments',
+  elementId: 'comments'
 });

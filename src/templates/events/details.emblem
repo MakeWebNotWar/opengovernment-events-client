@@ -1,2 +1,6 @@
 = view Opengov.EventSideMenuView id="side-menu"
-= view Opengov.CommentsView id="comments"
+if comments
+  = render 'comments' comments
+else
+  'Currently no conversations
+= view Opengov.CommentNewView valueBinding="controller" 

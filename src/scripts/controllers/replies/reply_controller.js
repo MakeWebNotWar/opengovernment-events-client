@@ -1,0 +1,1 @@
+Opengov.ReplyController = Ember.ObjectController.extend({});
