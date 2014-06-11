@@ -1,14 +1,6 @@
 #edit
   h1 Edit
   form submit=updateEvent
-    = input valueBinding="name"
-    = input valueBinding="location.name" 
-    = input valueBinding="location.address_1" placeholder="Street number and name"
-    = input valueBinding="location.address_2" placeholder="Address line2"
-    = input valueBinding="location.city" placeholder="City"
-    = input valueBinding="location.province" placeholder="Province/State"
-    = input valueBinding="location.postal_code" placeholder="Postal/Zip Code"
-    = input valueBinding="location.country" placeholder="Country"
-
+    partial "events/form"
     button class="success" Submit
     button click=reset Cancel

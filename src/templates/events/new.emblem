@@ -4,16 +4,6 @@
     p {{errorMessage}}
 
   form submit="create"
-    = input valueBinding="name" placeholder="Event Name"
-    = input valueBinding="description" placeholder="Event Description" type="textarea"
-    = input valueBinding="url" placeholder="Event URL"
-    = input valueBinding="start_date" placeholder="Event Date"
-    = input valueBinding="type" placeholder="Event Type e.g. Town Hall, Appathon etc."
-    = input valueBinding="location_name" placeholder="Locaiton Name"
-    = input valueBinding="address_1" placeholder="Location Street Number and Name"
-    = input valueBinding="address_2" placeholder="Address Line 2"
-    = input valueBinding="city" placeholder="City"
-    = input valueBinding="province" placeholder="Province"
-    = input valueBinding="postal_code" placeholder="Postal Code"
+    = partial "events/form"
     = input type="hidden" valueBinding="session.user_id" name="user_id"
     button class="button success" Create

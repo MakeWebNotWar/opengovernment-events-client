@@ -4,8 +4,7 @@ h4
   '{{comment.user.firstname}} {{comment.user.lastname}}
   small
     '// {{format-date comment.updated_at}}
-p
-  comment.text
+p {{comment.text}}
 
 if comment.isOwner
   .actions

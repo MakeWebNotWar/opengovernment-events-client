@@ -22,7 +22,7 @@ Opengov.EventsListItemView = Ember.View.extend({
       self.clickCount++;
       indexController.set('currentSelectedItem', itemController.id);
       map.setCenter(pin.getPosition());
-      map.setZoom(14);
+      map.setZoom(18);
     }
     
   },

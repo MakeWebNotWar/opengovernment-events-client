@@ -1,6 +1,6 @@
 if session.isAuthenticated
   form submit=createComment
-    Ember.TextArea valueBinding="new_comment_text"
+    Ember.TextArea valueBinding="text"
     button class="success" Add Comment
 else
   p 

@@ -37,14 +37,6 @@ Opengov.EventsNewController = Ember.Controller.extend({
       else {
         self.set('errorMessage', 'City cannot be empty.')
       }
-
-      
-    },
-    update: function(){
-
-    },
-    delete: function(){
-
     }
   }
 });
