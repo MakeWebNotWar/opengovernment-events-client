@@ -1,12 +1,12 @@
-Opengov.CommentController = Ember.ObjectController.extend({
-  needs: ['user', 'replies'],
+Opengov.OrganizerCommentController = Ember.ObjectController.extend({
+  needs: ['user', 'event'],
   actions: {
     destroyComment: function(comment){
       var self, store, url;
 
       self = this;
       store = self.store.adapterFor('application');
-      url = [store.host, store.namespace, 'comments', comment.id].join('/');
+      url = [store.host, store.namespace, 'ocomments', comment.id].join('/');
 
       Ember.$.ajax({
         type: "DELETE",
@@ -18,7 +18,7 @@ Opengov.CommentController = Ember.ObjectController.extend({
       }).then(
         function(){
           comment.get('event').then(function(record){
-            return record.get('comments');
+            return record.get('ocomments');
           }).then(function(comments){
             comments.removeObject(comment);
           });

@@ -1,0 +1,6 @@
+h1 Organizer Notes
+ul
+  each comment in controller
+    = render 'organizerComment' comment
+if isOrganizer
+  = view Opengov.CommentNewView valueBinding="controller"

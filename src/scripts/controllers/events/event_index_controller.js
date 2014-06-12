@@ -1,3 +1,3 @@
 Opengov.EventIndexController = Ember.ObjectController.extend(Opengov.MapMixin, {
-  needs: ['comment', 'user', 'login']
+  needs: ['comment', 'user', 'login', 'organizerComment']
 });

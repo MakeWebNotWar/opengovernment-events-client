@@ -10,7 +10,7 @@ Opengov.Router.map(function() {
     });
     this.route('new');
   });
-  this.resource('comments', {path: "comments/:comment_id"});
+  // this.resource('comments', {path: "comments/:comment_id"});
   this.route('profile');
   this.route('login');
   this.resource('signup', function(){

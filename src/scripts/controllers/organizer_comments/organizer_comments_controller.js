@@ -1,15 +1,32 @@
 Opengov.OrganizerCommentsController = Ember.ArrayController.extend({
   needs: ['event', 'user'],
-  itemController: 'communityComment',
+  itemController: 'organizerComment',
   sortProperties: ['created_at'],
   sortAscending: false,
+  isOrganizer: function(){
+    var self, session, user_id, result;
+
+    self = this;
+    session = self.get('session');
+    user_id = session.get('user_id');
+    result = false;
+
+    self.get('parentController').get('organizers').forEach(function(organizer){
+      id = organizer.id;
+      if(id === user_id){
+        result = true;
+      }
+    });
+
+    return result;
+  }.property('parentController.organizers.@each'),
   actions: {
     createComment: function(){
       var self, store, url, data;
 
       self = this;
       store = self.store.adapterFor('application');
-      url = [store.host, store.namespace, 'organizer_comments'].join('/');
+      url = [store.host, store.namespace, 'organizerComments'].join('/');
 
       data = {
         comment: {

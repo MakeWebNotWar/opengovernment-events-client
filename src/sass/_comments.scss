@@ -1,4 +1,4 @@
-#comments {
+#comments, #organizer-comments {
   position: relative;
   background-color: $white;
   color: $dark_grey;
@@ -7,6 +7,7 @@
   overflow: auto;
   height: 100%;
   margin: 0px;
+  border-right: 1px solid #ccc;
   h1,h2,h3,h4,h5,h6 {
     margin-top: 0px;
   }

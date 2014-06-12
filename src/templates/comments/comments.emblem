@@ -1,4 +1,4 @@
-h1 Conversations
+h1 Event Conversations
 ul
   each comment in controller
     = render 'comment' comment

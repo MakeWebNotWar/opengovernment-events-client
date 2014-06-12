@@ -15,9 +15,18 @@ ul.items
           br
           '{{location.city}}, {{location.province}}
         li class="event-organizer"
-          h3
-            'Organized by:
+          h3 Created by:
           p
             '{{owner.firstname}} {{owner.lastname}}
           .circle-image
             '{{gravatar-image owner.gravatarID}}
+        if organizers
+          li class="event-organizer"
+            h3 Organziers:
+            each organizer in organizers
+              p {{ organizer.firstname }} {{ organizer.lastname }}
+              .circle-image
+                '{{ gravatar-image organizer.gravatarID }}
+
+
+
