@@ -18,6 +18,6 @@ ul.items
           h3
             'Organized by:
           p
-            '{{user.firstname}} {{user.lastname}}
+            '{{owner.firstname}} {{owner.lastname}}
           .circle-image
-            '{{gravatar-image user.gravatarID}}
+            '{{gravatar-image owner.gravatarID}}

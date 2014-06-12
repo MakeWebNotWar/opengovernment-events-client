@@ -10,7 +10,8 @@ Opengov.Event = DS.Model.extend({
   end_date: DS.attr('string'),
   end_time: DS.attr('string'),
   comments: DS.hasMany('comment', {async: true}),
-  user: DS.belongsTo('user', {async: true}),
+  organizer_comments: DS.hasMany('organizerComment', {async: true}),
+  owner: DS.belongsTo('user', {async: true}),
   created_at: DS.attr('string'),
   updated_at: DS.attr('string')
 });

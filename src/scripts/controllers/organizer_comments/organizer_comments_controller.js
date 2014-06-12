@@ -1,6 +1,6 @@
-Opengov.CommentsController = Ember.ArrayController.extend({
-  needs: ['event', 'reply'],
-  itemController: 'comment',
+Opengov.OrganizerCommentsController = Ember.ArrayController.extend({
+  needs: ['event', 'user'],
+  itemController: 'communityComment',
   sortProperties: ['created_at'],
   sortAscending: false,
   actions: {
@@ -9,7 +9,7 @@ Opengov.CommentsController = Ember.ArrayController.extend({
 
       self = this;
       store = self.store.adapterFor('application');
-      url = [store.host, store.namespace, 'comments'].join('/');
+      url = [store.host, store.namespace, 'organizer_comments'].join('/');
 
       data = {
         comment: {
@@ -24,8 +24,7 @@ Opengov.CommentsController = Ember.ArrayController.extend({
         type: "POST",
         contentType: "application/x-www-form-urlencoded",
         headers: {
-          "X-Authentication-Token": self.get('session.authentication_token'),
-          "X-User-Email": self.get('session.user_email')
+          "X-Authentication-Token": self.get('session.authentication_token')
         }
       }).then(
         function(response) {
@@ -40,7 +39,7 @@ Opengov.CommentsController = Ember.ArrayController.extend({
             store.find('event', comment.event).then(function(event){
               delete comment.event;    
               comment.event = event;
-              comment = store.createRecord('comment', comment);
+              comment = store.createRecord('organizer_comment', comment);
               self.addObject(comment);
               self.set('text', null);
             });
@@ -52,4 +51,5 @@ Opengov.CommentsController = Ember.ArrayController.extend({
       );  
     },
   }
+
 });
