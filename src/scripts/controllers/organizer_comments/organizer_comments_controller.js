@@ -48,15 +48,15 @@ Opengov.OrganizerCommentsController = Ember.ArrayController.extend({
           var store, comment;
 
           store = self.store;
-          comment = response.comment;
-
+          comment = response.ocomment;
+          console.log(comment);
           store.find('user', comment.user).then(function(user){
             delete comment.user;
             comment.user = user;
             store.find('event', comment.event).then(function(event){
               delete comment.event;    
               comment.event = event;
-              comment = store.createRecord('organizer_comment', comment);
+              comment = store.createRecord('ocomment', comment);
               self.addObject(comment);
               self.set('text', null);
             });
