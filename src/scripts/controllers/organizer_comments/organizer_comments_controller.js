@@ -26,7 +26,7 @@ Opengov.OrganizerCommentsController = Ember.ArrayController.extend({
 
       self = this;
       store = self.store.adapterFor('application');
-      url = [store.host, store.namespace, 'organizerComments'].join('/');
+      url = [store.host, store.namespace, 'ocomments'].join('/');
 
       data = {
         comment: {
