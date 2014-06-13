@@ -50,3 +50,18 @@
     float: left;
   }
 }
+
+.textarea {
+  height: 200px;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px 0;
+  overflow: auto;
+
+}
+
+.text {
+  display: inline-block;
+  min-height: 100px;
+}

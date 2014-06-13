@@ -193,6 +193,10 @@ module.exports = function (grunt) {
             moment: 'js/libs/momentjs/moment.js',
             handlebars: 'js/libs/handlebars/handlebars.runtime.js',
             jquery: 'js/libs/jquery/jquery.js',
+            showdown: 'js/libs/showdown/src/showdown.js',
+            medium_editor_js: "js/libs/medium-editor/dist/js/medium-editor.js",
+            medium_editor_css: 'css/libs/medium-editor/dist/css/medium-editor.css',
+            medium_editor_theme: 'css/libs/medium-editor/dist/css/themes/flat.css',
             templates: 'js/templates/templates.js',
             frontend: 'http://localhost:9000',
             server_endpoint: 'http://localhost:3000'
@@ -216,6 +220,10 @@ module.exports = function (grunt) {
             moment: 'js/libs/momentjs/moment.js',
             handlebars: 'js/libs/handlebars/handlebars.runtime.js',
             jquery: 'js/libs/jquery/jquery.js',
+            showdown: 'js/libs/showdown/src/showdown.js',
+            medium_editor_js: 'js/libs/medium-editor/dist/js/medium-editor.js',
+            medium_editor_css: 'css/libs/medium-editor/dist/css/medium-editor.css',
+            medium_editor_theme: 'css/libs/medium-editor/dist/css/themes/flat.css',
             templates: 'js/templates/templates.js',
             frontend: 'http://opengov.webnotwar.ca',
             server_endpoint: 'https://api.peopleandcode.com'
@@ -251,9 +259,20 @@ module.exports = function (grunt) {
             'jquery/jquery.js', 
             'handlebars/handlebars.runtime.js',
             'momentjs/moment.js',
-            'ember-simple-auth/ember-simple-auth.js'
+            'ember-simple-auth/ember-simple-auth.js',
+            'medium-editor/dist/js/medium-editor.js',
+            'showdown/src/showdown.js'
           ],
           dest: '<%= yeoman.dev %>/js/libs/'
+        },
+        {
+          expand: true,
+          cwd: '<%= yeoman.src %>/bower_components/',
+          src: [
+            'medium-editor/dist/css/medium-editor.css',
+            'medium-editor/dist/css/themes/flat.css',
+          ],
+          dest: '<%= yeoman.dev %>/css/libs/'
         }]
       },
       oauth: {
@@ -276,9 +295,20 @@ module.exports = function (grunt) {
             'jquery/jquery.js', 
             'handlebars/handlebars.runtime.js',
             'momentjs/moment.js',
-            'ember-simple-auth/ember-simple-auth.js'
+            'ember-simple-auth/ember-simple-auth.js',
+            'medium-editor/dist/js/medium-editor.min.js',
+            'showdown/src/showdown.js'
           ],
           dest: '<%= yeoman.dev %>/js/libs/'
+        },
+        {
+          expand: true,
+          cwd: '<%= yeoman.src %>/bower_components/',
+          src: [
+            'medium-editor/dist/css/medium-editor.css',
+            'medium-editor/dist/css/themes/flat.css',
+          ],
+          dest: '<%= yeoman.dev %>/css/libs/'
         }]
       }
     },

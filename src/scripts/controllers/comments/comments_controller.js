@@ -5,16 +5,17 @@ Opengov.CommentsController = Ember.ArrayController.extend({
   sortAscending: false,
   actions: {
     createComment: function(){
-      var self, store, url, data;
+      var self, store, url, text, data;
 
       self = this;
       store = self.store.adapterFor('application');
       url = [store.host, store.namespace, 'comments'].join('/');
-
+      text = self.get('text');
+      
       data = {
         comment: {
           event: self.get('parentController.id'),
-          text: self.get('text')
+          text: text
         }
       };
 
@@ -43,6 +44,7 @@ Opengov.CommentsController = Ember.ArrayController.extend({
               comment = store.createRecord('comment', comment);
               self.addObject(comment);
               self.set('text', null);
+              $('.editable').html("");
             });
           });
         },
