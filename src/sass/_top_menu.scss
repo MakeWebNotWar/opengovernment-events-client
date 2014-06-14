@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   background-color: $purple;
-  height: 72px;
+  height: 67px;
   width: 100%;
   float:left;
   clear: both;
@@ -41,7 +41,7 @@
       border-right: 1px solid $dark_purple;
     }
     .logo a {
-      width: 330px;
+      width: 280px;
     }
   }
   #account-menu {
@@ -53,8 +53,8 @@
     }
     .profile {
       padding: 11px;
-      width: 72px;
-      height: 72px;
+      width: 67px;
+      height: 67px;
       z-index: 500px;
       .circle-image{
         width: 50px;
