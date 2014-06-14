@@ -1,5 +1,5 @@
 h1 Event Conversations
+= view Opengov.CommentNewView valueBinding="controller"
 ul
   each comment in controller
     = render 'comment' comment
-= view Opengov.CommentNewView valueBinding="controller"
