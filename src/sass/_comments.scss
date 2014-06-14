@@ -62,7 +62,10 @@
   padding: 20px;
   margin: 20px 0;
   overflow: auto;
-
+  p {
+    margin: 0px;
+    margin-bottom: 1em;
+  }
 }
 
 .text {
