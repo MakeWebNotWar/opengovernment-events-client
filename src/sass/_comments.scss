@@ -44,8 +44,12 @@
 }
 
 .comment {
+  h4 {
+    padding: 25px 0;
+    margin: 0px;
+  }
   .circle-image {
-    width: 100px;
+    width: 75px;
     margin-right: 20px;
     float: left;
   }
@@ -62,6 +66,5 @@
 }
 
 .text {
-  display: inline-block;
-  min-height: 100px;
+  display: block;
 }
