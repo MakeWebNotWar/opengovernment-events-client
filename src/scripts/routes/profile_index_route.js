@@ -3,6 +3,12 @@ Opengov.ProfileIndexRoute = Ember.Route.extend(Ember.SimpleAuth.AuthenticatedRou
     var self, session;
     self = this;
     session = self.get('session');
-    return this.store.find('user', session.get('user_id'));
+    if(session.isAuthenticated){
+      return self.store.find('user', session.get('user_id'));
+    }
+    else {
+      session.set('attemptedTransition', this)
+      self.transitionTo('login');
+    }
   }
 });

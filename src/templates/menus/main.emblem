@@ -1,5 +1,5 @@
 ul#main-menu
-  li.logo #{link-to 'index'| Open Government (beta)}
+  li.logo #{link-to 'index'| Event Map}
   li #{link-to 'events'| Events}
   li
     a href="http://data.webnotwar.ca" target="_blank" OpenData Datasets

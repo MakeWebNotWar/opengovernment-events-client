@@ -22,7 +22,7 @@ ul.items
             '{{gravatar-image owner.gravatarID}}
         if organizers
           li class="event-organizer"
-            h3 Organziers:
+            h3 Organizers:
             each organizer in organizers
               p {{ organizer.firstname }} {{ organizer.lastname }}
               .circle-image

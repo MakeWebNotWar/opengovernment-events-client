@@ -7,10 +7,8 @@
       ' {{firstname}} {{lastname}}
     #events
       h3 Your Events
-      ul
+      ol
         each event in events
           li
-            p
+            h4
               = link-to 'event' event | {{event.name}}
-              small 
-                |  comments ({{event.comments.length}})

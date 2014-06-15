@@ -112,8 +112,10 @@ footer {
 }
 
 #main {
+  display: block;
   position: relative;
   margin-top: 50px;
+  overflow: hidden;
 }
 
 #events-index-view {

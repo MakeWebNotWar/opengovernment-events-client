@@ -3,7 +3,7 @@
 = input valueBinding="url" placeholder="Event URL"
 = input valueBinding="start_date" placeholder="Event Date"
 = input valueBinding="type" placeholder="Event Type e.g. Town Hall, Appathon etc."
-= input valueBinding="location_name" placeholder="Locaiton Name"
+= input valueBinding="location_name" placeholder="Location Name"
 = input valueBinding="address_1" placeholder="Location Street Number and Name"
 = input valueBinding="address_2" placeholder="Address Line 2"
 = input valueBinding="city" placeholder="City"
